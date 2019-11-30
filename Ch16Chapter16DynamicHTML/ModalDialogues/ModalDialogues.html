@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Modal Window Test</title>
+    <script type="text/javascript" src="utils.js" ></script>
+    <script type="text/javascript">
+    // modalWindow class
+    function modalWindow(contents) {	
+        // Create a reference to self
+        var that = this;
+		
+        // Make the contents object hidden but rendered so I can measure it's size
+        contents.style.position = "absolute";
+        contents.style.visibility = "hidden";
+        contents.style.display = "block";
+		
+        // Get the size of the contents div
+        this.width = contents.offsetWidth;
+        this.height = contents.offsetHeight;		
+		
+        // First create a semi-transparent input blocker to cover the page
+        var iBlockr = document.createElement("div");
+        iBlockr.style.position = "absolute";
+        iBlockr.style.top = "0px"; iBlockr.style.left = "0px";
+        iBlockr.style.backgroundColor = "#000";
+        iBlockr.style.zIndex = 1000;
+        setOpacity(iBlockr, 0.5); // Make it semi-transparent
+		
+        // get the size of the document and window and use it to size the input blocker
+        var windowGeometry = getWindowGeometry();
+        iBlockr.style.width = windowGeometry.bodyWidth + "px";
+        iBlockr.style.height = windowGeometry.bodyHeight + "px";
+		
+        // Create the Window shim to block select boxes and make an opaque background for the window itself
+        var shim = document.createElement("iframe");
+        shim.style.position = "absolute";
+        shim.frameBorder = "0";
+        shim.style.top = (windowGeometry.scrollY + ((windowGeometry.windowHeight-this.height)/2)) + "px"; 
+        shim.style.left = (windowGeometry.scrollX + ((windowGeometry.windowWidth-this.width)/2)) + "px";
+        shim.style.width = this.width+"px";
+        shim.style.height = this.height+"px";
+        shim.style.zIndex = 2000;
+        shim.style.backgroundColor = "#FFF";		
+		
+        // this function will display the window
+        this.display = function() {
+            // Make this window a singleton and keep a global reference
+            window.currentModalWindow = that;
+            // Attach the modal input blocker to the document.
+            document.body.appendChild(iBlockr);
+            // Attach the shim to the document.
+            document.body.appendChild(shim);
+            // Move the contents into position
+            contents.style.position = "absolute";
+            contents.style.top = shim.style.top;
+            contents.style.left = shim.style.left;			
+            contents.style.visibility = "visible";
+            contents.style.zIndex = 3000;
+        }
+		
+        // This will eradicate the modal window
+        this.close = function() {
+            // Get rid of the input blocker and shim
+            document.body.removeChild(iBlockr);
+            document.body.removeChild(shim);
+			
+            // Hide the content window
+            contents.style.display = "none";
+            window.currentModalWindow = null;
+        }
+    }
+
+    function DisplayWindow(windowContentsID) {
+        var contentsObj = document.getElementById(windowContentsID);
+		
+        // Create an instance of modalWindow
+        var mW = new modalWindow(contentsObj);
+        mW.display();
+    }
+		
+    </script>
+</head>
+<body>
+<p id="myP">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<button onclick="DisplayWindow('windowContents')">Launch Modal Window</button>
+<div style="display:none; padding:20px;" id="windowContents">
+    <h1>About</h1>
+    <p>Modal Window v1.0</p>
+    <button onclick="window.currentModalWindow.close()">Close</button>
+</div>
+</body>
+</html>

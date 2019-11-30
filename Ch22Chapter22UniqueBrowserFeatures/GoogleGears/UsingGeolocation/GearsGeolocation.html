@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="http://code.google.com/apis/gears/gears_init.js"></script>
+<script>
+  if (!window.google || !google.gears) {
+	var welcomeMessage = "Thanks for trying my site. Please install Google Gears first!";
+    window.location = "http://gears.google.com/?action=install&message=" + escape(welcomeMessage) + "&return=" + window.location;
+  }
+}
+</script>	
+</head>
+<body>
+<h1>Google Gears Geolocation Demo</h1>
+<div id="position"></div>
+<script type="text/javascript">
+var geo = google.gears.factory.create('beta.geolocation');
+// Get the position
+geo.getCurrentPosition(function(position) {  
+    var posStr = "";
+    posStr += "Lat: " + position.latitude + "<br />";
+    posStr += "Long: " + position.longitude;
+    document.getElementById('position').innerHTML = posStr;
+}, function(error) {
+    document.getElementById('position').innerHTML = error.message;
+});
+
+</script>
+</body>
+</html>

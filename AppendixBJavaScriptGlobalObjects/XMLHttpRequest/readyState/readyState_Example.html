@@ -1,0 +1,21 @@
+<script>
+
+// Code to get the XHR refrence not included due to redundancy
+
+request.onreadystatechange = function() &osb;
+/*
+    readyState values:
+    * 0 = uninitialized – open() has not yet been called.
+    * 1 = open – send() has not yet been called.
+    * 2 = sent – send() has been called, headers and status are available.
+    * 3 = receiving – Downloading, responseText holds partial data (although this functionality is not available in IE [2])
+    * 4 = loaded – Finished.
+*/    
+  if (request.readyState == 4 && request.status == 200) &osb;
+    if (request.responseText) &osb;
+      callbackFunction(request.responseText);
+    &csb;
+  &csb;
+&csb;;
+
+</script>

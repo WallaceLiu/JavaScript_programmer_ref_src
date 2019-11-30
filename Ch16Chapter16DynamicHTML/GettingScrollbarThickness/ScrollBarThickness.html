@@ -1,0 +1,55 @@
+
+<html>
+<head>
+    <title>Scroll Bar Size</title>
+
+</head>
+<script type="text/javascript">
+
+function getScrollbarSize() {
+
+		// Create an Outer scrolling div
+		var dv = document.createElement('div');
+		dv.style.position = 'absolute';
+		dv.style.left = '-1000px';
+		dv.style.top = '-1000px';
+		dv.style.width = '100px';
+		dv.style.height = '100px';
+		dv.style.padding = '0px'; 
+		dv.style.margin = '0px';
+		dv.style.overflow = 'scroll';
+		dv.style.border = '0px';
+
+		// Attach it to the DOM
+		document.body.appendChild(dv);
+
+		// Inner div to deform the scrolling div and create a scroll bar
+		var inn = document.createElement('div');
+		inn.style.position = 'relative';
+		inn.style.border = '0px';
+		inn.style.height = '200px';
+		inn.style.padding = '0px'; 
+		inn.style.margin = '0px';		
+		dv.appendChild(inn);
+		
+		var scrollbarWidth = 100-inn.offsetWidth;
+		
+		document.body.removeChild(dv);				
+
+		return {scrollbarSize:scrollbarWidth};
+}
+
+
+function reportOnScrollbars() {
+	var geo = getScrollbarSize();
+	var res = "Scroll Bar Size: " + geo.scrollbarSize + "<br />";
+	document.getElementById('results').innerHTML = res;
+	
+}
+
+</script>
+<body onload="reportOnScrollbars()">
+		<div id="results">
+		</div>
+</body>
+</html>

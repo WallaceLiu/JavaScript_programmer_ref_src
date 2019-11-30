@@ -1,0 +1,17 @@
+<script>
+
+var myArrayInstance = new Array("one", "two", "three", "four", "one");
+
+function writeItOut(element, index, array) &osb;
+    document.write(index + " is " + element + "<br />");
+&csb;
+
+myArrayInstance.forEach(writeItOut);
+// Output:
+//0 is one
+//1 is two
+//2 is three
+//3 is four
+//4 is one
+
+</script>

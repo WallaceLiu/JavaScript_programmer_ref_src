@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// A simple clone function
+Array.prototype.clone: function() {
+    return [].concat(this);
+}
+
+// A multi-dimensional array clone function
+Array.prototype.cloneMulti = function() {
+    var myArr = [].concat(this);
+    for (var i = 0, len=myArr.length; i < len; i++)
+        if (Object.prototype.toString.apply(myArr[i]) === '[object Array]')
+            myArr[i] = myArr[i].clone();
+    return myArr;
+}
+
+var myMultiDimArray = [
+	["hello", "world"],
+	["something", "else"],
+	[1,2,3,4]
+];
+
+var myArrayCopy = myMultiDimArray.cloneMulti();
+
+myMultiDimArray[0][0] = "bla";
+
+document.write( myArrayCopy[0][0] ); // "hello"
+</script>
+</body>
+</html>

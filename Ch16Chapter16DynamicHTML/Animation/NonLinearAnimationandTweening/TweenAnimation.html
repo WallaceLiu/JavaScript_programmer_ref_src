@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Simple Threaded Animation</title>
+    <script type="text/javascript">
+    transitions = {
+        linear: function(p) {
+            return p;
+        },
+        sine: function(p) {
+            return 1 - Math.sin((1 - p) * Math.PI / 2);
+        }
+    };
+	
+    function animation(targetObj, fromX, fromY, targetX, targetY, animTime, animFn) {
+        // Keep a record of the object
+        var that = this;
+		
+        // Store our animation parameters
+        this.targetObj = targetObj;
+        this.fromX = fromX; this.fromY = fromY;
+        this.targetX = targetX; this.targetY = targetY;
+        this.animTime = animTime;
+        this.animFn = animFn;
+		
+        this.go = function() {
+            that.startTime = new Date();
+            that.drawFrame();
+        }
+        this.drawFrame = function() {
+            var progress = that.animFn(((new Date() - that.startTime)/that.animTime));
+            var newX = (progress*(that.targetX-that.fromX))+that.fromX;
+            var newY = (progress*(that.targetY-that.fromY))+that.fromY;
+            that.targetObj.style.left = Math.round(newX) + "px";
+            that.targetObj.style.top = Math.round(newY) + "px";
+            if (progress < 1.0)
+                setTimeout(that.drawFrame, 0);
+        }
+    }
+	
+    function animDiv() {
+        var divObj = document.getElementById("myDiv");
+		
+        var myAnim = new animation(divObj, 50, 50, 400, 200, 2000, transitions.sine);
+        myAnim.go();
+    }	
+    </script>
+</head>
+<body>
+<div id="myDiv" style="position:absolute; top:50px; left:50px; border:1px dotted black; background-color:yellow; width:50px; height:50px;"></div>
+<button onclick="animDiv()">Animate the div's position.</button>
+</body>
+</html>

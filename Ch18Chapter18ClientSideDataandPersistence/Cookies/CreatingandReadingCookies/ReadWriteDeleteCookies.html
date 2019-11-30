@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Cookies Storage</title>
+	<script type="text/javascript">
+	
+	Cookies = {
+		set: function(key, value, minstoexpire) {
+			var expires = "";
+			if (minstoexpire) {
+				var date = new Date();
+				date.setTime(date.getTime()+(minstoexpire*60*1000));
+				expires = "; expires="+date.toGMTString();
+			}
+			document.cookie = key+"="+encodeURIComponent(value)+expires+"; path=/";
+			return value;
+		},
+		get: function(key) {
+			var nameCompare = key + "=";
+			var cookieArr = document.cookie.split(';');
+			for(var i = 0; i < cookieArr.length; i++) {
+				var aCrumb = cookieArr[i].split("=");
+				var currentKey = decodeURIComponent(aCrumb[0]);
+				if (key == currentKey || " " + key == currentKey) 
+					return decodeURIComponent(aCrumb[1]);
+				
+			}
+			return null;
+		},
+		del: function(key) {
+			this.set(key,"",-1);
+		},
+		isAvailable: function() {
+			return (this.set('cookieTest', '1') == this.get('cookieTest'));
+		}
+	}
+		
+	</script>
+
+</head>
+<body>
+<h1>Cookies Storage</h1>
+<script type="text/javascript">
+Cookies.set("hello", "world", 10);
+Cookies.set("banana", "pancakes", 10);
+alert(Cookies.isAvailable("banana"));
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<script>
+
+// Get a reference to the date prototype and define getters and setters for the year
+var dp = Date.prototype;
+dp.__defineGetter__("year", function() &osb; return this.getFullYear(); &csb;);
+dp.__defineSetter__("year", function(y) &osb; this.setFullYear(y); &csb;);
+
+var myDate = new Date();
+
+// Test the getter
+
+document.write(myDate.__lookupGetter__('year')); // function () &osb; return this.getFullYear(); &csb;
+
+</script>

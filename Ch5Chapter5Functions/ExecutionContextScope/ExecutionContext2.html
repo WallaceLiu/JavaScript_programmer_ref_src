@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Showing how the keyword this workd
+var myObj = {
+    innerFunction : function() {
+        this.val = 100;
+    }
+}
+var myNewObj = {};
+myNewObj.innerFunction = myObj.innerFunction;
+myNewObj.innerFunction();
+document.write(myObj.val + "<br />");	// undefined
+document.write(myNewObj.val + "<br />");	// 100
+</script>
+</body>
+</html>

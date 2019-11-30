@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myObject = { property1:234 };
+
+// We can access the property using dot notation:
+document.write( myObject.property1 + "<br />" );    // "234"
+
+// We can also access it using array notation:
+document.write( myObject["property1"] + "<br />");    // "234"
+
+myObject["newProperty"] = "Hello World";
+
+myObject["myFunction"] = function() { document.write("It worked! <br />"); };
+
+myObject["myFunction"]();    // "It worked!"
+
+myObject.myFunction();    // "It worked!"
+
+// Now lets create a function in the global scope.
+function myGlobalFunction() {
+	document.write("The global object is like any other!");
+}
+
+// .. and test the window as a hash table:
+window["myGlobalFunction"]();
+// "The global object is like any other!"
+</script>
+</body>
+</html>

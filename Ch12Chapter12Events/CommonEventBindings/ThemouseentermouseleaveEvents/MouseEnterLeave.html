@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Mouseenter and Mouseleave</title>
+</head>
+<body>
+	<div id="div0" style="padding:30px; border:1px solid green;">
+	    <div id="div1" style="padding:30px; border:1px solid black;" onclick="alert('fdsf')">
+	        Hello I am div1
+	        <div id="div2" style="padding:30px; border:1px dotted grey;position:relative;top:50px;">
+	            Hello I am div2
+	            <div id="div3" style="padding:30px; border:1px dotted grey;">
+	                Hello I am div3
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<script type="text/javascript">
+		function hoverElement(e, oTarget) {
+			var isChildOf = function(pNode, cNode) {
+				if (pNode === cNode) 
+					return true;
+
+				while (cNode && cNode !== pNode)
+					cNode = cNode.parentNode; 
+
+				return cNode === pNode;
+			}
+		    var target = e.srcElement || e.target;
+			if (!oTarget)
+				oTarget = target;
+			var relTarg = e.relatedTarget || e.toElement;
+
+			if (document.attachEvent || isChildOf(oTarget, relTarg) == false)
+				alert("Mouseenter!");
+		}	
+
+		function unHoverElement(e, oTarget) {
+			var isChildOf = function(pNode, cNode) {
+				if (pNode === cNode) 
+					return true;
+
+				while (cNode && cNode !== pNode)
+					cNode = cNode.parentNode; 
+
+				return cNode === pNode;
+			}
+		    var target = e.srcElement || e.target;
+
+			if (!oTarget)
+				oTarget = target;
+			var relTarg = e.relatedTarget || e.toElement;
+		
+			if (document.attachEvent || (!isChildOf(oTarget, relTarg)))
+				alert("Mouseleave!");
+
+		}
+		
+		var theDiv = document.getElementById('div1');
+		if (document.attachEvent) {
+		    theDiv.attachEvent("onmouseenter", hoverElement);
+			theDiv.attachEvent("onmouseleave", unHoverElement);
+		} else {
+			theDiv.addEventListener("mouseover", function(el) {return function(e) {hoverElement(e, el)}}(theDiv), true);
+			theDiv.addEventListener("mouseout", function(el) {return function(e) {unHoverElement(e, el)}}(theDiv), true);
+		}
+	</script>
+</body>
+</html>

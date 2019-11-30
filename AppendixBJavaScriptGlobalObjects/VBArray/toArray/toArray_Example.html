@@ -1,0 +1,32 @@
+<HEAD>
+<SCRIPT LANGUAGE="VBScript">
+<!--
+Function CreateAVBArray()
+   Dim arr(4)
+   arr(0) = "Apple"
+   arr(1) = "Tree"
+   arr(2) = "House"
+   arr(3) = "Castle"
+       
+   CreateAVBArray = arr
+End Function
+-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JScript">
+<!--
+function writeoutVBArray(vba)
+&osb;
+   var a = new VBArray(vba);
+   var b = a.toArray();
+   document.write(b.toString()); // Apple,Tree,House,Castle
+&csb;
+-->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<SCRIPT language="jscript">
+   writeoutVBArray(CreateAVBArray());
+</SCRIPT>
+</BODY>

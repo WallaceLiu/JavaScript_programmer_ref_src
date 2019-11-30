@@ -1,0 +1,13 @@
+<script>
+
+// Works best in JavaScript (Mozilla)
+var errorInstance = new Error("No worky");
+
+document.write(errorInstance.toString() + "<br />"); // Moz: Error: No worky
+
+// Works best in JScript (Explorer)
+errorInstance = new Error(200, "No worky");
+
+document.write(errorInstance.description.toString()); // IE: No worky
+
+</script>

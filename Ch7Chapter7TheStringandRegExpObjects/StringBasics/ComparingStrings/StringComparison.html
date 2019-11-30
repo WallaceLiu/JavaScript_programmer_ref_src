@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var stringA = "Hello World";
+var stringB = "Hello World";
+var stringC = "Yellow World";
+
+// First we test the two similar strings
+document.write( (stringA == stringB) + "<br />");    // true
+
+// Now we test the alphabetically greater string with stringA
+document.write( (stringA == stringC) + "<br />");    // false
+
+// Now we see that >= and <= always returns true if they are equal
+document.write( (stringA >= stringB) + "<br />");    // true
+
+// Here are some more equivalence tests
+document.write( (stringA <= stringC) + "<br />");    // true
+document.write( (stringA > stringB) + "<br />");    // false
+document.write( (stringA < stringC) + "<br />");    // true
+
+// Now we do some basic alphabetical comparison tests
+var aaa = "AAA";
+var aaaa = "AAAA";
+var bb = "BB";
+
+document.write( (aaa < aaaa) + "<br />");    // true
+document.write( (bb > aaaa) + "<br />");    // true
+</script>
+</body>
+</html>

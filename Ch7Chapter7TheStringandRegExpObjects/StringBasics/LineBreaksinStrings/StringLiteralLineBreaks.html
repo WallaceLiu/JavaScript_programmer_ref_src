@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// THIS EXAMPLE WILL ONLY WORK IN MOZILLA BASED INTEPRETERS
+
+var lineBreakString = "Hello \
+World";
+var noLineBreakString = "Hello World";
+
+// No error is thrown in Mozilla, but will be in other browsers
+// Should return "true" in Mozilla
+document.write( lineBreakString == noLineBreakString ); 
+</script>
+</body>
+</html>

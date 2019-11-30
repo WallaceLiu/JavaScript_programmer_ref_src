@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// A simple example of a closure
+function greetMe(name) {
+	return function(greeting) {
+		return greeting + " " + name;
+	}
+}
+var greetAlexei = greetMe("Alexei");
+document.write( greetAlexei("Hello") ); // "Hello Alexei"
+</script>
+</body>
+</html>

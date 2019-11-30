@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Modifying Inline Styles</title>
+</head>
+<script type="text/javascript">
+function toggleContent(hrefObj) {
+	var divID = hrefObj.id + "Content";
+	var divObj = document.getElementById(divID);
+	if (divObj.style.display == "none")
+		divObj.style.display = "block";
+	else
+		divObj.style.display = "none";
+	return false;
+}
+</script>
+<body>
+<a href="#" onclick="return toggleContent(this);" id="readMore">Click to read more!</a>
+<div id="readMoreContent" style="display: none;">
+Our widgets are rated by the international widget rating academy to be 22% faster and more durable than other leading widgets. Try our free sample and find out for yourself!
+</div>
+	
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Text Input Events</title>
+</head>
+<body>
+<form>
+Text Input: 
+<input type="text" id="tInput" name="tInput" value="hello!" 
+    onclick="handleEvent('click', 'tInput')"
+    onchange="handleEvent('change', 'tInput')"
+    onselect="handleEvent('select', 'tInput')"
+    onkeydown="handleEvent('keydown', 'tInput')"
+    onkeyup="handleEvent('keyup', 'tInput')"
+    onkeypress="handleEvent('keypress', 'tInput')" >
+</form>
+
+<script type="text/javascript">
+    function handleEvent(evtType, targetID) {
+        var elog = document.getElementById("eventLog");
+        elog.innerHTML += "<br />" + targetID + ":" + evtType;
+        elog.scrollTop = elog.scrollHeight;
+    }
+</script>
+
+<div id="eventLog" style="width:600px; height:300px; overflow:scroll;">
+    <b>Events:</b>
+</div>
+
+</body>
+</html>

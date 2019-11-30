@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<div id="div1">Hello World</div>
+
+<script type="text/javascript">
+var div1 = document.getElementById("div1");
+div1.addEventListener("click", function() {alert('clicked')}, false);
+
+var evt = document.createEvent("MouseEvents");
+evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+div1.dispatchEvent(evt);
+
+</script>
+</body>
+</html>

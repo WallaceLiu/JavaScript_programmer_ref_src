@@ -1,0 +1,11 @@
+<script>
+
+var myS = "This is a string literal. literally.";
+
+document.write(myS.toSource() + "<br />"); // (new String("This is a string literal. literally."))
+
+var myNS = eval(myS.toSource());
+
+document.write(myNS); // This is a string literal. literally.
+
+</script>

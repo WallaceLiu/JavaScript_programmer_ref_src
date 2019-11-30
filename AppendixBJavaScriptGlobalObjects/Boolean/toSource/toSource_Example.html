@@ -1,0 +1,18 @@
+<script>
+
+// we create a boolean
+
+var myBool = true;
+
+// Display the result which is "(new Boolean(true))"
+
+document.write(myBool.toSource() + "<br />");
+
+// now we creat a new one from the source
+var newBool = eval(myBool.toSource()); 
+
+// And we see if this is equal to true, which it is
+
+document.write(newBool.toString());
+
+</script>

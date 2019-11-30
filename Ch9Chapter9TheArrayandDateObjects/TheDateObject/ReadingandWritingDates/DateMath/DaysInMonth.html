@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function daysInMonth(iMonth, iYear)
+{
+	// Subtract the overflow from 32
+	return 32 - new Date(iYear, iMonth, 32).getDate();
+}
+
+document.write( daysInMonth(1,3000) ); // 28
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+<head></head>
+<body>
+	In-line event registration
+	<script type="text/javascript">
+	function checkForm(formObj) {
+		// Cancel the form submit
+		return false;
+	}
+	</script>
+	<form onsubmit="return checkForm(this)">
+	    <input type="submit" value="Click me to submit!">
+	</form>
+</body>
+</html>

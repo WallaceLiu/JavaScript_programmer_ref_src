@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function Person( firstname, lastname, age ) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+}
+
+Person.prototype.sayHi = function() {
+    document.write( "Hi, my name is " + this.firstname + " " + this.lastname + "<br />");
+}
+
+Person.prototype.formalGreeting = function() {
+    this.sayHi();
+    // "Hi, my name is [firstname] [lastname]"
+    document.write("I am " + this.age + " years old.");
+}
+
+var dave = new Person("Dave", "Smith", 28);
+
+dave.formalGreeting();
+// "Hi, my name is Dave Smith.
+// I am 28 years old."
+
+</script>
+</body>
+</html>

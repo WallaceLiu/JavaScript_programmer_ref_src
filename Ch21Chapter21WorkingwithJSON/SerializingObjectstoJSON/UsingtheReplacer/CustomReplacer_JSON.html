@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Custom Replacer Example</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<script type="text/javascript" src="/json2.js" ></script>
+</head>
+
+<body>
+<h1>Custom Replacer Example</h1>
+<div id="result"></div>
+<script type="text/javascript">
+
+var Countries = new Array("canada", "usa", "great britain", "austrialia");
+
+// ["CANADA","USA","GREAT BRITAIN","AUSTRIALIA"]
+document.write( JSON.stringify( Countries, function(key, value) {
+	if (typeof value == "string") {
+		return value.toString().toUpperCase();
+	} else 
+		return value;
+} ) + "<br />");
+</script>
+</body>
+</html>
+

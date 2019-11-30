@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Use label and break to control the execution of loops
+bigloop:
+for (var i = 0; i < 10; i++) {
+	smallerloop:
+	for (var x = 0; x < 10; x++) {
+		document.write("i:" + i + " x:" + x + "<br />");
+		if (x == 3)
+			break smallerloop;
+		if (i == 2)
+			break bigloop;
+	}
+}
+</script>
+</body>
+</html>

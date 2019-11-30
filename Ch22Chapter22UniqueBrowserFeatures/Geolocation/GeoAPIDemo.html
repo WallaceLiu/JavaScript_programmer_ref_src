@@ -1,0 +1,21 @@
+<html>
+<body>
+<h1>Geolocation API Demo</h1>
+<div id="position"></div>
+<script type="text/javascript">
+if (navigator.geolocation) {  
+	// Get the position
+	navigator.geolocation.getCurrentPosition(function(position) {  
+		var posStr = "";
+		posStr += "Lat: " + position.coords.latitude + "<br />";
+		posStr += "Long: " + position.coords.longitude;
+		document.getElementById('position').innerHTML = posStr;
+	}, function(error) {
+		document.getElementById('position').innerHTML = "Error. You may not have any providers available.";
+	});
+} else {  
+	document.getElementById('position').innerHTML = "I'm sorry, but geolocation services are not supported by your browser.";  
+}	
+</script>
+</body>
+</html>

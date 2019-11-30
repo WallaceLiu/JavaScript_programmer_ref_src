@@ -1,0 +1,12 @@
+<script>
+
+var array1 = new Array("one", "cartoon", "yah", "citywide", "cat");
+
+function combineWords(previousValue, currentValue, index, array) &osb;
+  return (previousValue + currentValue + ',');
+&csb;
+
+document.write(array1.reduce(combineWords));
+// outputs onecartoon,yah,citywide,cat,
+
+</script>

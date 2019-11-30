@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function addEvent(target,eventType,eventHandler) {
+    if (target.addEventListener)
+        target.addEventListener(eventType,eventHandler,false);
+    else if (target.attachEvent)
+        target.attachEvent('on'+eventType,eventHandler);
+}
+
+function removeEvent(target,eventType,eventHandler) {
+    if (target.removeEventListener)
+        target.removeEventListener(eventType,eventHandler,false);
+    else if (target.detachEvent)
+        target.detachEvent('on'+eventType,eventHandler);
+}
+</script>
+</body>
+</html>

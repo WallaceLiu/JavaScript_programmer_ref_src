@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.stripNonAlphaNumeric = function() {
+	return this.replace(/[^A-Za-z0-9 ]+/g, "");
+}
+
+String.prototype.stripNonNumeric = function() {
+	return this.replace(/[^0-9]+/g, "");
+}
+
+String.prototype.stripNonAlpha = function() {
+	return this.replace(/[^A-Za-z ]+/g, "");
+}
+
+var originalString = "Here is some text, some punctuation @#$#@!, and numbers: 342343234 234, and more text.";
+
+document.write( originalString.stripNonAlphaNumeric() + "<br />");
+document.write( originalString.stripNonNumeric() + "<br />");
+document.write( originalString.stripNonAlpha() );
+
+/*
+Output:
+Here is some text some punctuation and numbers 342343234 234 and more text
+342343234234
+Here is some text some punctuation and numbers and more text
+*/
+</script>
+</body>
+</html>

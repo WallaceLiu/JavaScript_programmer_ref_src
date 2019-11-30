@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myString = "Both Java and JavaScript share the same name, but are quite different.";
+
+document.write( myString.replace("Java", "X") + "<br />");
+// Both X and JavaScript share the same name, but are quite different. 
+
+document.write( myString.replace(/Java/g, "X") + "<br />");
+// Both X and XScript share the same name, but are quite different.
+</script>
+</body>
+</html>

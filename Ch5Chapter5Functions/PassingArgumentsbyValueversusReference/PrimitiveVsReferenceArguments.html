@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrates the difference between passing primitive vs reference types as arguments
+var myNum = 100;
+var myObj = {name:'David', age:12};
+
+function changeVals(num, obj) {
+	num = 0;
+	obj.name = "Changed";
+}
+
+changeVals(myNum, myObj);
+
+document.write(myNum + "<br />");    // "100"
+document.write(myObj.name + "<br />");    // "Changed"
+</script>
+</body>
+</html>

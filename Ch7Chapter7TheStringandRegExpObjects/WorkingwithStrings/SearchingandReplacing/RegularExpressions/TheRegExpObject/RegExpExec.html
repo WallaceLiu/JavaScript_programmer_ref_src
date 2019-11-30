@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myRegexp = /Java(Script)?/g;
+var myString = "Both Java and JavaScript share the same name, but are quite different.";
+
+myRegexp.exec(myString);
+document.write( myRegexp.lastIndex + "<br />");	// 9
+myRegexp.exec(myString);
+document.write( myRegexp.lastIndex + "<br />");	// 24
+myRegexp.exec(myString);
+document.write( myRegexp.lastIndex );	// 0
+
+// The last response was 0 so we have reached the end.
+</script>
+</body>
+</html>

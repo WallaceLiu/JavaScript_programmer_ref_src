@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myObject = {name:'jimmy', age:12, height:123}
+delete myObject["jimmy"];
+delete myObject.age;
+with (myObject) {
+    delete height;
+}
+
+// and an object
+var myObject = new Object();
+delete myObject;
+
+var myObj2 = {};
+myObj2 = null;
+</script>
+</body>
+</html>

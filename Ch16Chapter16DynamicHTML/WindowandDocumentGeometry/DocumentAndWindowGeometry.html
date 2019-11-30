@@ -1,0 +1,54 @@
+
+<html>
+<head>
+    <title>Browser Geometry</title>
+
+</head>
+<script type="text/javascript">
+// Gets the accurate window size
+
+function getWindowGeometry() {
+	
+	var doc = (!document.compatMode || document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
+	if (window.innerWidth)	{
+		// Most Browsers
+		var browserWidth = window.innerWidth;
+		var browserHeight = window.innerHeight;
+	} else {		
+		// IE
+		var browserWidth = doc.clientWidth;
+		var browserHeight = doc.clientHeight;								
+	}
+	var bodyWidth = Math.max(doc.scrollWidth, browserWidth);
+	var bodyHeight = Math.max(doc.scrollHeight, browserHeight);
+	
+	var scrollX = (bodyWidth > browserWidth);
+	var scrollY = (bodyHeight > browserHeight);
+	
+	return {windowWidth: browserWidth, windowHeight: browserHeight, bodyWidth:bodyWidth, bodyHeight:bodyHeight, scrollX: scrollX, scrollY:scrollY};	
+	
+}
+
+
+
+function reportGeometry() {
+	var geo = getWindowGeometry();
+	var res = "windowWidth: " + geo.windowWidth + "<br />";
+	res += "windowHeight: " + geo.windowHeight + "<br />";
+	res += "bodyWidth: " + geo.bodyWidth + "<br />";
+	res += "bodyHeight: " + geo.bodyHeight + "<br />";
+	document.getElementById('results').innerHTML = res;
+	var myBox = document.getElementById('box');
+	myBox.style.width = geo.windowWidth + "px";
+	myBox.style.height = geo.windowHeight + "px";	
+}
+
+</script>
+<body onload="reportGeometry()">
+	<div style="position:absolute;top:0px;left:0px;border: 1px solid red;" id="box"></div>
+	<div style="width:5000px; height:5000px;"><h1>Hello World</h1>
+		<div id="results">
+		</div>
+	</div>
+</body>
+</html>

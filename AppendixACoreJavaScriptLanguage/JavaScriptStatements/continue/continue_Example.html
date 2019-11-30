@@ -1,0 +1,36 @@
+<script>
+
+i = 0;
+n = 0;
+while (i < 5) &osb;
+   i++;
+   if (i == 3)
+      continue;
+   n++;
+&csb;
+
+document.writeln("i is " + i + " but n is " + n + "<br />"); 
+// i is 5 but n is 4
+
+// In this example we'll use labels
+
+i = 0;
+n = 0;
+j = 0;
+startingpoint:
+while (i < 4) &osb;
+    i++
+    n = 0;
+    while (n < 4) &osb;
+        n++;
+        j++;
+        if (n > 2) &osb;
+            continue startingpoint;
+        &csb;
+    &csb;
+&csb;
+
+document.write("Should have been 16 iterations. There actually were: " + j);
+// Should have been 16 iterations. There actually were: 12
+
+</script>

@@ -1,0 +1,17 @@
+<script>
+
+var aprilFools = new Date(2008, 4, 1, 16, 25, 13, 9);
+
+// and output the date
+
+document.write( aprilFools.toSource() + "<br />"); // (new Date(1209684313009))
+
+// create a new date based on that
+
+var newDate = eval(aprilFools.toSource());
+
+// output the new date
+
+document.write( newDate.toString() ); // Thu May 01 2008 16:25:13 GMT-0700 (PDT)
+
+</script>

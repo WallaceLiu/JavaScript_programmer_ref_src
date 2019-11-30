@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>DOM Storage Events</title>
+</head>
+<body>
+<h1>DOM Storage Events</h1>
+<script type="text/javascript">
+function handleStorageEvent(e) {
+    // Safari - only attributes:
+    var str = "The key that was modified: " + e.key + "\n";
+    str += "Original value: " + e.oldValue + "\n";
+    str += "New value: " + e.newValue + "\n";
+    str += "URL of the page: " + e.url;
+    alert(str);
+}
+
+if (document.attachEvent) {
+    document.attachEvent("onstorage", handleStorageEvent); // IE
+} else {
+    document.body.addEventListener('storage', handleStorageEvent, false); // W3C
+}
+
+// make some changes to data
+sessionStorage["hello"] = "world";
+sessionStorage["hello"] = "world2";
+</script>
+</body>
+</html>

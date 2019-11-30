@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrating the concept of scope via an expando assignment
+var myObj = {
+    innerFunction : function() {
+        this.val = 100;
+    }
+}
+myObj.innerFunction();
+document.write(myObj.val);    // 100
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>My Object Inspector</title>
+</head>
+<body>
+    <div id="myDiv" class="myDivClass">I am a DIV.</div>
+
+    <script>
+        function inspectElement(elNode) {
+            for (var item in elNode) {
+                document.write(item + ": " + elNode[item] + "<br />");
+            }
+        }
+        
+        // Now we write out all the properties of this object to the page.
+        inspectElement(document.getElementById("myDiv"));
+    </script>
+</body>
+</html>

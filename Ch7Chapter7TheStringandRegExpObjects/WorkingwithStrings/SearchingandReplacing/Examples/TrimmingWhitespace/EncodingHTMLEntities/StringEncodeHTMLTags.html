@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.encodeHTML = function() {
+	return this.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+var originalString = "This <b>string<b> has some <code>HTML</code> in it.";
+
+document.write( originalString.encodeHTML() );
+// This &lt;b&gt;string&lt;b&gt; has some &lt;code&gt;HTML&lt;/code&gt; in it.
+</script>
+</body>
+</html>

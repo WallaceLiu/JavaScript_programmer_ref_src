@@ -1,0 +1,14 @@
+<script>
+
+var myText = "Too many cooks spoil the broth.\nYup. Cooks are where it's at.";
+var regex = /cook(s)/gim;
+var res = regex.test(myText);
+
+if (res == true)
+    document.write("A match was found.");
+else
+    document.write("Did not find anything.");
+    
+// out: A match was found.
+
+</script>

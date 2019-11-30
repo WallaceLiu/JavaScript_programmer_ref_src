@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myDate = new Date("Oct 31, 2002");
+
+myDate.setFullYear(3001);
+
+document.write("Day of the week in 3001: " + myDate.getDay() + "<br />");	// 6 (Friday)
+
+// compare the local time and utc time:
+
+document.write( "Local hours: " + myDate.getHours() + ", UTC hour: " + myDate.getUTCHours() );
+// In my case this was: "Local hours: 0, UTC hour: 8 "
+</script>
+</body>
+</html>

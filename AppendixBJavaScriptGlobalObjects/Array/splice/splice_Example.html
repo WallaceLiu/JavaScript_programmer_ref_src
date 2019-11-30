@@ -1,0 +1,17 @@
+<script>
+
+var myArray = new Array("one", "two", "three", "four", "five", "six", "seven");
+
+// cut out two of the items
+
+var cutItems = myArray.splice(2,3); // one,two,six,seven
+
+document.write(cutItems.join(',') + "<br />"); // prints three,four,five
+
+// Cut out the item "two" and insert two more
+
+myArray.splice(1,1, "apple", "tree");
+
+document.write(myArray.join(',') + "<br />"); // prints one,apple,tree,six,seven
+
+</script>

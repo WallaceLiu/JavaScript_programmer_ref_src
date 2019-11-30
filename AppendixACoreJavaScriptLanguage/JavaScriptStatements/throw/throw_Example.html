@@ -1,0 +1,32 @@
+<script>
+
+var totalMoney = 2000.00;
+
+function withdrawCash(amount) &osb;
+    totalMoney -= amount;
+    if (totalMoney < 0) &osb;
+        totalMoney += amount;
+        throw noMoneyException;
+    &csb;
+&csb;
+
+function noMoneyException(message) &osb;
+    this.message = message;
+    this.name = "MoneyException";
+&csb;
+
+// Now let's withdraw some money
+
+withdrawCash(224);
+
+// Now lets try a rediculously big amount
+
+try &osb;
+    withdrawCash(123123);
+&csb; catch(e) &osb;
+    document.write(e.name);
+&csb;
+
+// noMoneyException
+
+</script>

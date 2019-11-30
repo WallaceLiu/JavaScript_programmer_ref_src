@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Skipping over an array element in a for loop using continue
+var myArray = ["a", "b", "cat", "dog", "tree", "e", "house"];
+
+document.write("Some of the longer items in the array are: <br />");
+for (var i = 0; i < myArray.length; i++) {
+	if (myArray[i].length == 1) 
+		continue;
+	document.write(myArray[i] + "<br />");
+}
+</script>
+</body>
+</html>

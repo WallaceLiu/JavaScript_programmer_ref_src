@@ -1,0 +1,10 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var SearchText = "Hi my name is Jerry and my phone number is 219-423-4432.";
+document.write( SearchText.search(/\b\d{3}([- \.,])\d{3}\1\d{4}\b/g) );    // "43"
+</script>
+</body>
+</html>

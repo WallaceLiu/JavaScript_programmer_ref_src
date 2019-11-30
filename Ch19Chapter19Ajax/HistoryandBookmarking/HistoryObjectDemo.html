@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>Backbutton and bookmarking script</title>
+</head>
+<body>
+<h1>Backbutton and bookmarking script</h1>
+<script type="text/javascript">
+var HistoryObject = function(url, callbackFn) {
+	// create a reference to self
+	var that = this;
+	
+	// set the callback function
+	this.callbackFn = callbackFn;
+	
+	// indicate the location of the iframe URL
+	this.frameUrl = url;
+	
+	// create the iframe
+	if ('\v' == 'v') {
+		this.iframeObj = document.createElement("iframe");
+		this.iframeObj.src = url + "?state=";
+		this.iframeObj.style.display = "block";
+		document.body.appendChild(this.iframeObj);
+	}
+	
+	// This checks the has to see if anything has changes
+	this.checkHash = function() {
+		if ('\v' == 'v') {
+			var stateHash = that.iframeObj.contentWindow.bbhash;
+			window.location.hash = stateHash; // for IE
+		} else
+			var stateHash = window.location.hash.replace("#", "");
+			
+		stateHash = decodeURIComponent(stateHash);
+
+		if (that.currentStateHash != stateHash) {
+			that.currentStateHash = stateHash;
+			that.callbackFn.call(that);
+		}
+		
+		that.hashTimer = setTimeout(that.checkHash, 1000);
+	};
+	
+	// Begin the hash timer check
+	this.currentStateHash = "";	
+	this.hashTimer = setTimeout(this.checkHash, 250);
+	
+	
+	// This method will add an item to the history
+	this.InsertHistory = function(stateHash) {
+		// If this is IE then change the iframe URL
+		if ('\v' == 'v')
+			that.iframeObj.src = that.frameUrl + "?state=" + encodeURIComponent(stateHash);
+		window.location.hash = stateHash;
+	};
+}
+
+function HistoryCallbackFunction() {
+	alert("Restoring state to " + this.currentStateHash);
+}
+
+var ho = new HistoryObject("history.php", HistoryCallbackFunction);
+
+function doAjaxRequest() {
+	ho.InsertHistory("ajaxarea1=content1");
+	
+	// Do ajax request
+	
+	return false;
+}
+
+</script>
+<button onclick="doAjaxRequest();">Do Ajax Request and Add History Item</button>
+</body>
+</html>

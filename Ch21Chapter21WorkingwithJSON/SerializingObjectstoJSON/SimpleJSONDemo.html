@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Simple JSON.stringify Examples</title>
+	<script type="text/javascript" src="/json2.js" ></script>
+</head>
+
+<body>
+<h1>Simple JSON.stringify Examples</h1>
+<div id="result"></div>
+<script type="text/javascript">
+
+// "Hello World"
+document.write( JSON.stringify( "Hello World" ) + "<br />");	
+
+// 21.31
+document.write( JSON.stringify( 21.31 ) + "<br />");
+
+// ["Hello","World"]
+document.write( JSON.stringify( new Array("Hello", "World") ) + "<br />");
+
+var obj = {
+	a: 21,
+	b: "Hello World",
+	c: true
+};
+// {"a":21,"b":"Hello World","c":true}
+document.write( JSON.stringify( obj ) + "<br />");
+</script>
+</body>
+</html>
+

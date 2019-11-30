@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrating the effect of attempted function overloading
+function threeArguments(a, b, c) {
+    return "We expect 3 arguments: " + a + ", " + b + ", " + c;
+}
+
+// Now we try to overload the function
+function threeArguments(a,b,c,d) {
+    return "Now we expect 4 arguments: " + a + ", " + b + ", " + c + ", " + d;
+}
+
+// Now we attempt to use the first version
+document.write( threeArguments(1, 2, 3) ); // "We expect 4 arguments: 1, 2, 3, undefined"
+
+// We see that the reference to threeArguments has been overridden.
+</script>
+</body>
+</html>

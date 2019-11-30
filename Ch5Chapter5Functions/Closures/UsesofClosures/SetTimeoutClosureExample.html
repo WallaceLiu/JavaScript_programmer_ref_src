@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// A nice way to use closures with setTimeout
+function putTextInLater(objID, text, timedelay) {
+    setTimeout(function() {
+        document.getElementById(objID).innerHTML = text;
+    }, timedelay);
+}
+putTextInLater('myDiv', 'Hello World!', 500);
+</script>
+</body>
+</html>

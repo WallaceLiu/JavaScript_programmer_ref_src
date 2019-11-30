@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Will return a number between min (inclusive) and max (exclusive)
+Math.randomFloat = function(min, max) {
+     return Math.random() * (max-min) + min;
+}
+
+// Will return a whole number between min (inclusive) and max (exclusive)
+// Note that we use floor() instead of round() to correct for an uneven distribution of numbers
+Math.randomInt = function(min, max) {
+     return min + Math.floor(Math.random() * (max - min + 1));
+}
+</script>
+</body>
+</html>

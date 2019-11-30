@@ -1,0 +1,44 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Lets create an object with a few properties
+var myNewObject = { property1:213, property2: true, property3: "Hello World", bla:null};
+
+// Lets create another object with the same properties
+var myNewObject2 = { property1:213, property2: true, property3: "Hello World", bla:null};
+
+Object.prototype.isSame = function(cObj) {
+    var result = true;
+    if (cObj) {
+        // Go one direction
+        for (var key in cObj) {
+            if (cObj[key])
+                if (!this[key] || (cObj[key] != this[key])) {
+                    result = false;
+                    break;
+                }
+        }
+        if (result == true) {
+            // now go the other direction
+            for (var key in this) {
+                if (this[key])
+                    if (!cObj[key] || (this[key] != cObj[key])) {
+                        result = false;
+                        break;
+                    }
+            }			
+        }
+    } else result = false;
+    return result;
+}
+
+document.write(  myNewObject.isSame(myNewObject2) + "<br />"); // true
+
+myNewObject2.expandoProperty = "I'm new!";
+
+document.write(  myNewObject.isSame(myNewObject2) ); // false
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function myFunction(){
+	var anotherClosure = function() {
+		alert("I promise not to leak on your program!");
+	}
+	function innerFunction() {
+		var elObj = document.getElementById("myDiv");
+		elObj.onclick = anotherClosure;
+	};
+	innerFunction();
+}
+myFunction();
+</script>
+</body>
+</html>

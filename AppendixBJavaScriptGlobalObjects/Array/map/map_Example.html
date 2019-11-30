@@ -1,0 +1,17 @@
+<script>
+
+var array1 = new Array("one", "cartoon", "yah", "citywide", "cat");
+
+var array2 = new Array("house", "two", "three", "yup", "forest");
+
+function isLongEnough(element, index, array) &osb;
+  return (element.length > 3);
+&csb;
+
+document.write(array1.map(isLongEnough).join(',') + "<br />");
+// outputs false,true,false,true,false
+
+document.write(array2.map(isLongEnough).join(',') + "<br />");
+// outputs true,false,true,false,true
+
+</script>

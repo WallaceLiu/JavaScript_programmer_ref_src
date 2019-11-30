@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Iterates over the elements of an array and object using the for .. in construct
+var animals = ["cow", "horse", "cat", "pig", "rabbit", "fish"];
+for (theanimal in animals) {
+	document.write(theanimal + "-" + animals[theanimal] + "<br />");	
+}
+
+document.write("-----------<br />");  // breaks up the two loops on the page
+
+var myObject = {apple:100,truthiness:false,astring:'hello'};
+for (item in myObject) {
+	document.write(item + "-" + myObject[item] + "<br />");
+}
+</script>
+</body>
+</html>

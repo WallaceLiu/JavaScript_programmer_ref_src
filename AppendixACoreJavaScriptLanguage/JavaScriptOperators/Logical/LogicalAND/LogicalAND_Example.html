@@ -1,0 +1,16 @@
+<script>
+
+// In this statement we use && logical AND to set up two conditions.
+// only the first one will be executed because it will fail and the engine will
+// not need to proceed to any others. We know this because if the second condition
+// were evaluated, it would change the value of myVal.
+
+var myVal = 5;
+
+if ((myVal > 6) && (myVal = 10)) &osb;
+    document.write("The conditions passed and myVal should now be equal to 10: " + myVal);
+&csb;
+
+document.write(myVal); // 5
+
+</script>

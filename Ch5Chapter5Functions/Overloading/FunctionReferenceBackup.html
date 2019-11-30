@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Backing up a function reference, then obliterating the original reference
+function threeArguments(a, b, c) {
+    return "We expect 3 arguments: " + a + ", " + b + ", " + c;
+}
+
+// Make a backup of the reference
+var threeArgumentsBackup = threeArguments;
+
+// Now we try to overload the function
+threeArguments = function(a,b,c,d) {
+    return "Now we expect 4 arguments: " + a + ", " + b + ", " + c + ", " + d;
+}
+
+// Now we attempt to use the first version
+document.write( threeArguments(1, 2, 3) + "<br />"); // "We expect 4 arguments: 1, 2, 3, undefined"
+
+// Now we attempt to use the backup
+document.write( threeArgumentsBackup(1, 2, 3) + "<br />"); // "We expect 3 arguments: 1, 2, 3"
+
+// We see that the original reference to threeArguments has been maintained.
+</script>
+</body>
+</html>

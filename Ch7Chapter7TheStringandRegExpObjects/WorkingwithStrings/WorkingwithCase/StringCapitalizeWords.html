@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// This utility will capitalize the first letter of
+// each word in a string
+
+String.prototype.capitalize = function() {
+	return this.replace(/\b[a-z]/g, function(matchChar){
+		return matchChar.toLocaleUpperCase();
+	});
+}
+
+document.write("alexei robert white".capitalize());
+// "Alexei Robert White"
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<script>
+
+var o = &osb;p:1&csb;;
+o.watch("p",
+   function (id, oldval, newval) &osb;
+      document.write("o." + id + " changed from " + oldval + " to " + newval + "<br />");
+      return newval;
+   &csb;);
+
+o.p = 2;
+o.p = 3;
+delete o.p;
+o.p = 4;
+
+o.unwatch('p');
+o.p = 5;
+
+/*
+o.p changed from 1 to 2
+o.p changed from 2 to 3
+o.p changed from undefined to 4
+*/
+
+</script>

@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrating hasOwnProperty()
+person = {name:"Elvis"};
+
+// First we test for a known property
+document.write( person.hasOwnProperty('name') + "<br />" );    // true
+
+// Now we test for one that doesn't exit
+document.write( person.hasOwnProperty('age') );	    // false
+
+// Now we test for one that exists but is inherited!
+document.write( person.hasOwnProperty('hasOwnProperty') );	    // false
+</script>
+</body>
+</html>

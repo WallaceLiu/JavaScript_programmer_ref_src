@@ -1,0 +1,47 @@
+<script>
+
+// This function will return an XHR object no matter what the browser
+function getXHRReference() &osb;
+    // Provide the XMLHttpRequest class for IE 5.x-6.x:
+    if( typeof XMLHttpRequest == "undefined" ) XMLHttpRequest = function() &osb;
+      try &osb; return new ActiveXObject("Msxml2.XMLHTTP.6.0") &csb; catch(e) &osb;&csb;
+      try &osb; return new ActiveXObject("Msxml2.XMLHTTP.3.0") &csb; catch(e) &osb;&csb;
+      try &osb; return new ActiveXObject("Msxml2.XMLHTTP") &csb; catch(e) &osb;&csb;
+      try &osb; return new ActiveXObject("Microsoft.XMLHTTP") &csb; catch(e) &osb;&csb;
+      throw new Error( "This browser does not support XMLHttpRequest." )
+    &csb;
+    else
+        return new XMLHttpRequest(); // Other browsers
+&csb;
+
+// This function will be called when the request is successful
+function callbackFunction(response) &osb;
+    // Treat the response like an XML document
+    var xmlDoc=response.documentElement;
+    document.write("Company Name: " + xmlDoc.getElementsByTagName("compname")[0].childNodes[0].nodeValue + "<br />");
+    document.write("Contact Name: " + xmlDoc.getElementsByTagName("contname")[0].childNodes[0].nodeValue + "<br />");
+    document.write("Address: " + xmlDoc.getElementsByTagName("address")[0].childNodes[0].nodeValue + "<br />");
+    document.write("City: " + xmlDoc.getElementsByTagName("city")[0].childNodes[0].nodeValue + "<br />");
+    document.write("Country: " + xmlDoc.getElementsByTagName("country")[0].childNodes[0].nodeValue);    
+&csb;
+
+// Get an instance of the XHR object
+var request = getXHRReference();
+
+// Do a POST request
+request.open("POST", "/quicktest/data", true);
+request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+request.onreadystatechange = function() &osb;
+    
+  if (request.readyState == 4 && request.status == 200) &osb;
+    if (request.responseXML) &osb;
+      callbackFunction(request.responseXML);
+    &csb;
+  &csb;
+&csb;;
+
+request.send("vars=none&cool=yes"); // We'll send a couple dummy variables as data
+
+
+</script>

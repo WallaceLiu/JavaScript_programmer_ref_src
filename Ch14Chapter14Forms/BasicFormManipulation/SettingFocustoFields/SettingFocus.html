@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Setting Focus</title>
+</head>
+<body>
+<form action="signup.php" onsubmit="return false;" name="signupForm">
+<input type=hidden>
+Text1: <input type=text> <br />
+Text2: <input type=text> <br />
+Text3: <input type=text> <br />
+<input type=submit>
+</form>
+<script type="text/javascript">
+	if (window.attachEvent)
+		window.attachEvent("onload", setFocus);
+	else
+		window.addEventListener("load", setFocus, true);
+
+	function setFocus() {
+		var els = document.forms[0].elements;
+		for (var i = 0; i < els.length; i++)
+			if (els[i].type != "hidden") {
+				els[i].focus();
+				break;
+			}
+	};
+</script>
+</body>
+</html>
+

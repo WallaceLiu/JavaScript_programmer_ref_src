@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Simple overloading using argument hashes
+function describeBook(args) {
+	if (args.name)
+		document.write("Name: " + args.name + "<br />");
+	if (args.pages)
+		document.write("Pages: " + args.pages + "<br />");
+	if (args.chapters)
+		document.write("Chapters: " + args.chapters + "<br />");
+	if (args.author)
+		document.write("Author: " + args.author + "<br />");
+	if (args.published)
+		document.write("Publish Date: " + args.published + "<br />");
+	if (args.type)
+		document.write("Type: " + args.type + "<br />");
+	if (args.section)
+		document.write("Section: " + args.section + "<br />");	
+}
+
+describeBook({name:'Gone with the Wind', author: 'Margaret Mitchell', section:'Historical Fiction'});
+</script>
+</body>
+</html>

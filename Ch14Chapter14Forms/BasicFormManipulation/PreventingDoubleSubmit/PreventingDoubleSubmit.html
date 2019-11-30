@@ -1,0 +1,15 @@
+<html>
+<head>
+	<title>Preventing double-submit</title>
+</head>
+<body>
+	<form action="signup.php" onsubmit="return false;" name="signupForm">
+	Text: <input type=text>
+	<input type=button onclick="this.disabled=true; this.form.submit();" value="Submit">
+	</form>
+	<script type="text/javascript">
+	document.signupForm.elements[document.signupForm.elements.length-1].disabled=false;
+	</script>
+</body>
+</html>
+

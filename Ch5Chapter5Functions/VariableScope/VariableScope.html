@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrating the impact of variable scope in functions
+var a = "apple";
+
+function myFunct() {
+    var a = "book";
+    document.write(a + "<br />");    // "book"
+}
+
+myFunct();    // "book"
+
+document.write(a + "<br />"); // "apple"
+</script>
+</body>
+</html>

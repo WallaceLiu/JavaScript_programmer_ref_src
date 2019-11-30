@@ -1,0 +1,25 @@
+<script>
+
+// Here we use the assignment variable to assign various types to variables
+
+var a = 100.1;    // a Number
+document.write("a == " + a + ", typeof " + (typeof a) + ".<br />");
+// a == 100.1, typeof number.
+
+var b = &osb;alpha:true,beta:[23,44,58], gamma:34.32&csb;;
+document.write("b == " + b.toString() + ", typeof " + (typeof b) + ".<br />");
+// b == [object Object], typeof object.
+
+// make a copy of b
+var c = b;
+document.write("c == " + c.toString() + ", typeof " + (typeof c) + ".<br />");
+// c == [object Object], typeof object.
+
+// modify b
+b = 21;
+
+// now we test to see if c is still the same
+document.write("c == " + c.toString() + ", typeof " + (typeof c) + ".<br />");
+// c == [object Object], typeof object.
+
+</script>

@@ -1,0 +1,22 @@
+<html>
+<head></head>
+<body>
+<div id="div1">
+<div id="div2">
+I am inside a div.
+</div>	
+</div>
+<script type="text/javascript">
+
+if (document.addEventListener)
+	document.addEventListener("click", eventHandler, false);
+else
+	document.attachEvent("onclick", eventHandler);
+
+function eventHandler(e) {
+	var target = e.srcElement || e.target;
+	alert(target.id);
+}
+</script>
+</body>
+</html>

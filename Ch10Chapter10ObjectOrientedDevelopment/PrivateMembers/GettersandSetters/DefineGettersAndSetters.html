@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function Person( nameStr ) {
+    var name = nameStr;
+		
+    this.__defineGetter__("name", function() {
+        return name;
+    });
+
+    this.__defineSetter__("name", function(nameStr) {
+        name = nameStr;
+    });
+}
+
+Person.prototype = {
+    get name() {
+        return this._name;
+    },
+    set name(nameStr) {
+        this._name = nameStr;
+    }
+}
+
+document.write("Getter for name: " + dave.__lookupGetter__("name").toString() );
+// "Getter for name: function () { return this._name; }"
+</script>
+</body>
+</html>

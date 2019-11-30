@@ -1,0 +1,14 @@
+<script>
+
+var myArrayInstance = new Array("one", "two", "three", "four");
+
+// This will combine the array with a string between each value
+var myNewArray = myArrayInstance.slice(2);
+
+document.write(myNewArray.join(',') + "<br />"); // three,four
+
+myNewArray = myArrayInstance.slice(1,2);
+
+document.write(myNewArray.join(',') + "<br />"); // three
+
+</script>

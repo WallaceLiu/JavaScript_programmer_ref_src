@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Adding A CSS Sheet</title>
+</head>
+<body>
+<script type="text/javascript">
+function addSheet(cssURL) {
+	var ss = document.createElement("link");
+	ss.type = "text/css";
+	ss.rel = "stylesheet";
+	ss.href = cssURL;
+	if (document.createStyleSheet)
+		document.createStyleSheet(cssURL);
+	else
+		document.getElementsByTagName("head")[0].appendChild(ss);
+}
+</script>
+</body>
+</html>

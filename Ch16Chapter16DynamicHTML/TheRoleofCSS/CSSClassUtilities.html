@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Class Utilities for DHTML</title>
+    <style type="text/css">
+        .myClass1 {
+            background-image: url(http://www.google.ca/images/nav_logo4.png);	
+        }
+        .myClass2 {
+            background-image: url(http://www.gstatic.com/news/img/oldlogo_large/en_ca/news.gif);	
+        }
+    </style>
+</head>
+<script type="text/javascript">
+function addClass(el, classNm) {
+	if (!hasClass(el, classNm))
+		el.className += " " + classNm;
+}
+
+function removeClass(el, classNm) {
+	var cNames = el.className.split(' ');
+	for (var i = 0; i < cNames.length; i++)
+		if (cNames[i] == classNm)
+			cNames[i] = "";
+	el.className = cNames.join(' ');
+}
+
+function hasClass(el, classNm) {
+	var cNames = el.className.split(' ');
+	for (var i = 0; i < cNames.length; i++)
+		if (cNames[i] == classNm)
+			return true;
+	return false;
+}
+</script>
+<body>
+	
+	<div id="myDiv" class="myClass0 myClass3">Hello World</div>
+	<button onclick="addClass(document.getElementById('myDiv'), 'myClass1')">Add the class myClass1 to the div</button><br />
+	<button onclick="removeClass(document.getElementById('myDiv'), 'myClass1')">Remove the class myClass1 to the div</button>
+	
+</body>
+</html>

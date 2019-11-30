@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<div id="div1">Hello World</div>
+
+<script type="text/javascript">
+var div1 = document.getElementById("div1");
+div1.attachEvent("onclick", function() {alert('clicked')});
+
+var eventObj = document.createEventObject();
+// Let's set an arbitrary property of the event object. We won't actually need this, however.
+eventObj.cancelBubble = true;
+div1.fireEvent("onclick",eventObj);
+</script>
+</body>
+</html>

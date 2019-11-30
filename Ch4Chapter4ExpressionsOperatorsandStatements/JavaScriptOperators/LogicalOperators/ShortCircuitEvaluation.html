@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+if (false || function(){alert("This will always execute!")}()) {}
+
+if (true || function(){alert("This will never execute!")}()) {}
+
+if (true && function(){alert("This will always execute!")}()) {}
+
+if (false && function(){alert("This will never execute!")}()) {}
+</script>
+</body>
+</html>

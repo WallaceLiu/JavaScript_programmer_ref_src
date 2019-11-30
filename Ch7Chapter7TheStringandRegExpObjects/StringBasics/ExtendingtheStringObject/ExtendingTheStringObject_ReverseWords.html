@@ -1,0 +1,29 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.reverseWords = function() {
+	var resultString = "";
+	if (this.length > 0) {
+		var StringArr = this.split(" ");
+		for (var i = StringArr.length-1; i > -1; i--) {
+			resultString += StringArr[i];
+			if (i > 0)
+				resultString += " ";
+		}
+	}
+	return resultString;
+}
+
+var StringObjectInstance = new String("This is a test of the String prototype.");
+var StringPrimitiveInstance1 = "This is a test of the String prototype on a primitive.";
+var StringPrimitiveInstance2 = String("This is a test of the String prototype on another kind of primitive.");
+
+document.write(StringObjectInstance.reverseWords() + "<br />");
+document.write(StringPrimitiveInstance1.reverseWords() + "<br />");
+document.write(StringPrimitiveInstance2.reverseWords() + "<br />");
+document.write("This is a test of the string primitive".reverseWords());
+</script>
+</body>
+</html>

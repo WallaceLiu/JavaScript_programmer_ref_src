@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>My List</title>
+    </head>
+
+    <body>
+        <h1 class="myHeading">My List!</h1>
+        <ul id="myUnorderedList">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+		<script>
+		// Get the head and body elements
+		var head = document.documentElement.childNodes[0];
+		var body = document.documentElement.childNodes[1];
+		
+		// Get the list Object
+		// NOTE: In W3C this will point to the H1 due to the whitespace
+		var listObj = document.documentElement.childNodes[1].childNodes[1];
+		
+		</script>
+    </body>
+</html>

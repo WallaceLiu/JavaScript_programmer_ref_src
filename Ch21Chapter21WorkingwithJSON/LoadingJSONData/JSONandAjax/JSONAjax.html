@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>JSON Ajax Example</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<script type="text/javascript" src="/json2.js" ></script>
+</head>
+
+<body>
+<h1>JSON Ajax Example</h1>
+<div id="result"></div>
+<script type="text/javascript">
+
+var XHR = function() {
+    if( typeof XMLHttpRequest == "undefined" ) {
+        var xhrNames = ["MSXML2.XMLHTTP.6.0", "MSXML2.XMLHTTP.5.0", "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP", "Microsoft.XMLHTTP"];
+        for (var i = 0; i < xhrNames.length; i++) {
+            try {
+                var XHR = new ActiveXObject(xhrNames[i]);
+            } catch(e) {}
+        }
+        if (typeof XHR != undefined)
+            return XHR;
+        else
+            new Error("Ajax not supported!");
+    } else {
+        return new XMLHttpRequest();
+    }
+}
+
+var myXhr = new XHR();
+
+myXhr.onreadystatechange = handleStatusChange;
+
+myXhr.open("get", "data.json", true);
+myXhr.send( null );
+
+function handleStatusChange() {
+    if (myXhr.readyState == 4) {
+        // Transfer is finished! Parse the JSON
+		try {
+			var jsObj = JSON.parse(myXhr.responseText);
+			var resultHTML = "<table border="1"><tr><th>Name</th><th>Email</th><th>Age</th></tr>"
+			for (var i = 0; i < jsObj.customers.length; i++) {
+				var cust = jsObj.customers[i];
+				resultHTML += "<tr><td>" + cust.name + "</td>";
+				resultHTML += "<td>" + cust.email + "</td>";
+				resultHTML += "<td>" + cust.age + "</td></tr>";
+			}
+			resultHTML += "</table>";
+			document.getElementById('result').innerHTML = resultHTML;
+		} catch(e) {
+			alert('invalid JSON!' + e);
+		}
+    }
+}
+
+
+</script>
+</body>
+</html>
+

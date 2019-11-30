@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// This utility function will wrap any HTML tag around a string literal along with optional CSS class(es)
+String.prototype.tagify = function(tag, cssClasses) {
+	// First check to see if cssClasses was passed
+	if (!cssClasses)
+		cssClasses = "";
+	// Now ensure we passed a valid tag
+	if (tag)
+		return '<' + tag + ' CLASS="' + cssClasses + '">' + this + '</' + tag + '>';
+	else
+		return this;
+}
+
+
+document.write("I am now in a styled DIV".tagify("div", "bigText"));
+// <div class="bigText">I am now in a styled DIV</div>
+document.write("I am now in a styled SPAN".tagify("span", "bigText"));
+// <span class="bigText">I am now in a styled SPAN</span>
+document.write("I am now a simple styled paragraph".tagify("p"));
+// <p class="">I am now a simple styled paragraph</p>
+</script>
+</body>
+</html>

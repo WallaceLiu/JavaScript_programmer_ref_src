@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myRegexp = /Java(Script)?/g;
+var myString = "Both Java and JavaScript share the same name, but are quite different.";
+
+myRegexp.exec(myString);
+myRegexp.exec(myString);
+// Now we're at position 24
+
+document.write( RegExp.input + "<br />" );	// "Both Java and JavaSc.." - the entire string
+document.write( RegExp.lastMatch + "<br />" );	// "JavaScript"
+document.write( RegExp.lastParen + "<br />" );	// "Script"
+document.write( RegExp.leftContext + "<br />" );	// "Both Java and"
+document.write( RegExp.rightContext + "<br />");	// "share the same name, but are quite different."
+
+document.write( RegExp["$_"] + "<br />" );	// "Both Java and JavaSc.." - the entire string
+document.write( RegExp["$&"] + "<br />" );	// "JavaScript"
+document.write( RegExp["$+"] + "<br />" );	// "Script"
+document.write( RegExp["$'"] + "<br />" );	// "Both Java and"
+document.write( RegExp["$'"] );	// "share the same name, but are quite different."different."
+</script>
+</body>
+</html>

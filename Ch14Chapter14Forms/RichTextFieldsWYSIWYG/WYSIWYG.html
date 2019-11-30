@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>WYSIWYG</title>
+</head>
+<body onload="wysiwygStartup()">
+<button onclick="return performCommand('bold', null)">Bold</button>
+<button onclick="return performCommand('italic', null)">Italics</button>
+<button onclick="return performCommand('underline', null)">Underline</button><br />
+<iframe id="wysiwyg" style="width:500px; height:300px;"></iframe>
+<script type="text/javascript">
+function wysiwygStartup() {
+    var Editor=document.getElementById('wysiwyg').contentWindow.document;
+    Editor.designMode='on';	  
+    // Older Safari - 1.3 to 2.0
+    if (doc)
+       document.getElementById('wysiwyg').contentDocument.designMode = "on";
+
+}
+function performCommand(cmd, arg) {
+    document.getElementById('wysiwyg').contentWindow.document.execCommand(cmd, false, arg);
+    return false;
+}
+</script>
+</body>
+</html>

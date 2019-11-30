@@ -1,0 +1,212 @@
+<html>
+<head></head>
+<body>
+<script>
+
+BrowserSniff = function() {
+     var that = this;
+     var ua = navigator.userAgent;
+     var OSDetectionList = [
+          {
+               string: ua,
+               subString: ["Win95", "Windows 95"],
+               identity: {os:"Windows", osver: "95"}
+          },
+          {
+               string: ua,
+               subString: ["Win98", "Windows 98"],
+               identity: {os:"Windows", osver: "98"}
+          },
+          {
+               string: ua,
+               subString: ["Win 9x 4.90", "Windows ME"],
+               identity: {os:"Windows", osver: "ME"}
+          },
+          {
+               string: ua,
+               subString: ["Windows NT 5.0", "Windows 2000"],
+               identity: {os:"Windows", osver: "2000"}
+          },
+          {
+               string: ua,
+               subString: ["Windows NT 5.1", "Windows XP"],
+               identity: {os:"Windows", osver: "XP"}
+          },
+          {
+               string: ua,
+               subString: ["WinNT", "Windows NT", "WinNT4.0", "Windows NT 4.0"],
+               identity: {os:"Windows", osver: "NT"}
+          },
+          {
+               string: ua,
+               subString: ["MacOS X", "Mac OS X"],
+               identity: {os:"Macintosh", osver: "X"}
+          },
+          {
+               string: ua,
+               subString: ["68K", "Mac_6800", "Mac_PowerPC", "PPC"],
+               identity: {os:"Macintosh", osver: "PREX"}
+          }
+     ];
+     var detectionList = [
+          {
+               string: ua,
+               subString: "Firefox",
+               versionSearch: ["Firefox/"],
+               identity: {name:"Firefox",basetype:"mozilla"}
+          },
+          {
+               prop: window.opera,
+               versionSearch: ["Opera/"],
+               identity: {name:"Opera",basetype:"opera"}
+          },
+          {      string: ua,
+               subString: "OmniWeb",
+               versionSearch: ["OmniWeb/"],
+               identity: {name:"OmniWeb",basetype:"webkit"}
+          },
+          {
+               string: navigator.vendor,
+               subString: "Apple",
+               versionSearch: ["Version/", "Safari/"],
+               deviceSearch: [["iPhone","iPhone"]],
+               identity: {name:"Safari",basetype:"webkit"}
+          },     
+          {
+               string: ua,
+               subString: "BlackBerry",
+               versionSearch: ["0/", "e/", "i/", "y/"],
+               deviceSearch: [["BlackBerry","BlackBerry"]],
+               identity: {name:"BlackBerry",basetype:"blackberry"}
+          },
+          {
+               string: ua,
+               subString: "Nintendo Wii",
+               versionSearch: ["Opera/"],
+               deviceSearch: [["Nintendo Wii","Wii"]],
+               identity: {name:"Nintendo Wii",basetype:"opera"}
+          },
+          {
+               string: navigator.vendor,
+               subString: "iCab",
+               versionSearch: ["iCab/"],
+               identity: {name:"iCab",basetype:"webkit"}
+          },
+          {
+               string: navigator.vendor,
+               subString: "Konqueror",
+               versionSearch: ["KHTML/"],
+               identity: {name:"Konqueror",basetype:"webkit"}
+          },          
+          {
+               string: navigator.vendor,
+               subString: "Camino",
+               versionSearch: ["Camino/"],
+               identity: {name:"Camino",basetype:"mozilla"}
+          },
+          {          
+               // for newer Netscapes (6+)
+               string: ua,
+               subString: "Navigator",
+               versionSearch: ["Navigator/"],
+               identity: {name:"Netscape",basetype:"mozilla"}
+          },
+          {
+               string: ua,
+               subString: "MSIE",
+               identity: {name:"Explorer",basetype:"ie"},
+               versionSearch: ["MSIE "]
+          },     
+          {
+               string: ua,
+               subString: "Gecko",
+               identity: {name:"Mozilla",basetype:"mozilla"},
+               versionSearch: ["rv"]
+          },
+          {           
+               // for older Netscapes (4-)
+               string: ua,
+               subString: "Netscape",
+               versionSearch: ["Netscape/"],
+               identity: {name:"Netscape",basetype:"mozilla"}
+          }                         
+     ];
+     
+     function setBrowserIdentity(identity) {
+          for (key in identity.identity) {
+               that[key] = identity.identity[key];
+          }
+          
+          // Perform a version detection
+          for (var i = 0; i < identity.versionSearch.length; i++) {
+               if (ua.indexOf(identity.versionSearch[i]) > -1) {
+                    var infoArray = ua.split(/(\s|;|\))/gi);
+                    for (var x = 0; x < infoArray.length; x++) {
+                         if (infoArray[x].indexOf(identity.versionSearch[i]) > -1) {
+                              var verArr = infoArray[x].split(identity.versionSearch[i])[1].split(".");
+                              var verStr = verArr[0].toString() + ".";
+                              verArr.shift();
+                              verStr += verArr.join("").toString();
+                              that.version = parseFloat(verStr);
+                         }
+                    }
+                    break;
+               }
+          }
+          
+          // Perform a device detection
+          if (identity.deviceSearch)
+               for (var i = 0; i < identity.deviceSearch.length; i++) {
+                    if (ua.indexOf(identity.deviceSearch[i][0])>-1)
+                         that[identity.deviceSearch[i][1]] = true;
+               }
+     }
+     
+     // Detect the browser
+     
+     for (var i = 0; i < detectionList.length; i++) {
+          var dl = detectionList[i];
+          if (dl.prop) {
+               setBrowserIdentity(dl);
+               break
+          } else {
+               if (dl.string && dl.string.indexOf(dl.subString)>-1) {
+                    setBrowserIdentity(dl);
+                    break;
+               }
+          }
+     }
+     
+     // Detect the operating system
+     for (var i = 0; i < OSDetectionList.length; i++) {
+          var dl = OSDetectionList[i];
+          for (x = 0; x < dl.subString.length; x++) {
+               if (dl.string && dl.string.indexOf(dl.subString[x])>-1) {
+                    for (key in dl.identity) {
+                         that[key] = dl.identity[key];
+                    }
+                    break;
+               }
+          }
+          
+     }
+     
+     // Set the language
+     this.language = navigator.language || navigator.userLanguage || navigator.systemLanguage || navigator.browserLanguage;
+};
+
+browser = new BrowserSniff();
+
+document.write("name: " + browser.name + "<br />");
+document.write("version: " + browser.version + "<br />");
+document.write("iPhone: " + browser.iPhone + "<br />");
+document.write("BlackBerry: " + browser.BlackBerry + "<br />");
+document.write("language: " + browser.language + "<br />");
+document.write("os: " + browser.os + "<br />");
+document.write("osver: " + browser.osver + "<br />");
+document.write("basetype: " + browser.basetype);
+
+
+</script>
+</body>
+</html>

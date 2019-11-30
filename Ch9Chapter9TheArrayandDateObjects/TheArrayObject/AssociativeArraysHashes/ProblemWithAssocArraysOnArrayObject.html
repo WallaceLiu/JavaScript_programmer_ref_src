@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myArray = [];
+
+myArray["apple"] = "Hello";
+myArray["tree"] = "World";
+
+document.write( myArray.length + "<br />");     // 0;
+
+Array.prototype.sayHi = function() {return "hi"};
+
+for (key in myArray) {
+     document.write("key: " + key + " = " + myArray[key] + "<br />");
+}
+
+/*
+Output:
+key: apple = Hello
+key: tree = World
+key: sayHi = function () { return "hi"; }
+*/
+</script>
+</body>
+</html>

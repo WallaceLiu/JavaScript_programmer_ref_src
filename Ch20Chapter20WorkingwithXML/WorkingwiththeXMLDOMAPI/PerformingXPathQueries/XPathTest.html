@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>XPath Example</title>
+</head>
+<body>
+<h1>XPath Example</h1>
+<script type="text/javascript">
+function parseXML(str) {
+    if ('' == 'v') {
+        //Internet Explorer
+        var xmlNames = ["Msxml2.DOMDocument.6.0", "Msxml2.DOMDocument.4.0", "Msxml2.DOMDocument.3.0", "Msxml2.DOMDocument", "Microsoft.XMLDOM", "Microsoft.XmlDom"];
+        for (var i = 0; i < xmlNames.length; i++) {
+            try {
+                var xmlDoc = new ActiveXObject(xmlNames[i]);
+                break;
+            } catch(e) {}
+        }
+        xmlDoc.async = false;
+        xmlDoc.loadXML(str);
+    } else {
+        try  {
+            //Firefox, Mozilla, Opera, Webkit.
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(str,"text/xml");
+        } catch(x) {
+            alert(x.message);
+            return;
+        }
+    }
+    return xmlDoc;
+}
+
+var xmlStr = "<customers><customer id="123"><name>Alexei White</name><birthdate>March 10, 1980</birthdate><email>me@domainhidden.com</email><phone>604-555-5555</phone><pets><pet><name>Sparky</name><animal>Cat</animal>            </pet></pets></customer><customer id="124"><name>Tyson Lambert</name><birthdate>January 13, 1979</birthdate><email>ty@domainhidden.com</email><phone>604-545-5555</phone><pets><pet><name>Jimbo</name><animal>Snake</animal>            </pet></pets></customer></customers>";
+
+var xmlDOM = parseXML(xmlStr);
+
+function selectXMLNodes(xmlDoc, xpath) {
+    if ('' == 'v') {
+        // IE
+        xmlDoc.setProperty("SelectionLanguage", "XPath");
+        return xmlDoc.documentElement.selectNodes(xpath);
+    } else {
+        // W3C
+        var evaluator = new XPathEvaluator();	
+        var resultSet = evaluator.evaluate(xpath, xmlDoc, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+        var finalArray = [];
+        if (resultSet) {
+            var el = resultSet.iterateNext();
+            while (el) {
+                finalArray.push(el);
+                el = resultSet.iterateNext();
+            }
+            return finalArray;
+        }
+    }
+}
+
+var nodeList = selectXMLNodes(xmlDOM, "/customers/customer[@id = "124"]");
+
+alert(nodeList[0].length);
+	
+</script>
+</body>
+</html>

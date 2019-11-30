@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.clean = function() {
+	return this.replace(/\s+/g, " ").replace(/^([\s]+)|([\s]+)$/gm, "");
+}
+
+var originalString = "  The quick      brown fox jumped      over the small frog.  ";
+var trimmedString = originalString.clean();
+
+document.write( "Original String length: " + originalString.length + "<br />");
+document.write( "Final String length: " + trimmedString.length + "<br />");
+document.write( "Final String: " + trimmedString);
+</script>
+</body>
+</html>

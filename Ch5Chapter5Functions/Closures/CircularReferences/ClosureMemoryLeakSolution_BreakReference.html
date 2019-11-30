@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrating a circular reference memory leak with a closure
+function myFunction(){
+    var elObj = document.getElementById("myDiv");
+    elObj.onclick = function() {
+        alert("This function is leaking.");
+    }
+    elObj = null; // THIS BREAKS THE CIRCULAR REFERENCE
+}
+myFunction();
+</script>
+</body>
+</html>

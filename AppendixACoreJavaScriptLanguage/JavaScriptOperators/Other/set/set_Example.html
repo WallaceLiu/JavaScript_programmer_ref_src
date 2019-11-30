@@ -1,0 +1,24 @@
+<script>
+
+var articles = &osb;
+  get latest () &osb;
+    if (this.log.length > 0) &osb;
+      return this.log[this.log.length - 1];
+    &csb;
+    else &osb;
+      return null;
+    &csb;
+  &csb;,
+  set current (str) &osb;
+    return this.log[this.log.length] = str;
+  &csb;,
+  log: []
+&csb;
+
+articles.current = "About the Universe";
+articles.current = "A Brief History of Time";
+articles.current = "A Longer History of Time";
+
+document.write(articles.latest); // A Longer History of Time
+
+</script>

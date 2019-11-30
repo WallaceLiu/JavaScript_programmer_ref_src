@@ -1,0 +1,24 @@
+<html>
+<head>
+	<script type="text/javascript">
+	function startupScript(e) {
+		// this code will execute when the window is loaded.
+		alert("Loaded!");
+	}
+	function teardownScript(e) {
+		// this code will execute when the window is UNloaded.
+	}
+
+	if (document.attachEvent) {
+		window.attachEvent("onload", startupScript);
+	        window.attachEvent("onunload", teardownScript);
+	} else {
+		window.addEventListener("load", startupScript, false);	
+                window.addEventListener("unload", teardownScript, false);        
+        }
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.shorten = function(count) {
+	if (this.length > count+2)
+		return this.slice(0, count-1).replace(/[\s]+$/g, "")+String.fromCharCode(8230);	
+	else
+		return this;
+}
+
+
+var myString = "The quick brown fox.";
+
+document.write( myString.shorten(11) ); // "The quick…"
+</script>
+</body>
+</html>

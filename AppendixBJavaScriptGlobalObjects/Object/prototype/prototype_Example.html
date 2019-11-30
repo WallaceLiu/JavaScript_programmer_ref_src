@@ -1,0 +1,22 @@
+<script>
+
+// First we extend the Object object to include some random property
+Object.prototype.developedBy = "John Smith";
+
+// Now we create some objects of different types
+
+function myFunction() &osb;&csb;
+
+var myArray = new Array("apple", "tree", "horse");
+
+var myBool = new Boolean("true");
+
+// Now we test to see how the new property was applied to these descendent objects
+
+document.write(myFunction.developedBy + "<br />"); //John Smith
+
+document.write(myArray.developedBy + "<br />"); //John Smith
+
+document.write(myBool.developedBy); //John Smith
+
+</script>

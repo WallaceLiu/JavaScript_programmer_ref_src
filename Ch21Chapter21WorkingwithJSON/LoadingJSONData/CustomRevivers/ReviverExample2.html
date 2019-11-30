@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>JSON.parse() Reviver Example</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<script type="text/javascript" src="/json2.js" ></script>
+</head>
+
+<body>
+<h1>JSON.parse() Reviver Example</h1>
+<div id="result"></div>
+<script type="text/javascript">
+function CustomClass(value) {
+    this.value = value;
+    this.getValueTimesTwo = function() {
+        return value*2;
+    }
+    this.toJSON = function() {
+        return { customconstructor: "CustomClass", value: value};
+    }
+}
+
+var jsonString = "{\"customObject\":{\"customconstructor\":\"CustomClass\",\"value\":3.1415}}";
+
+var jsonObj = JSON.parse(jsonString, function(key, value) {
+	if (typeof value == "object" && value.customconstructor)
+		if (value.customconstructor == "CustomClass") {
+			// It's an instance of CustomClass
+			return new CustomClass(value.value);
+		}
+	// otherwise just return the value
+	return value;
+});
+
+console.log( jsonObj ); // "Mon Mar 10 1980 04:00:00 GMT-0800 (PST)"
+
+</script>
+</body>
+</html>
+

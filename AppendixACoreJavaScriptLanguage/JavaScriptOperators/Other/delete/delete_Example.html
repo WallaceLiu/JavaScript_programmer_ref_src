@@ -1,0 +1,14 @@
+<script>
+
+// First lets create a random number
+myRandom = Math.random()*100;
+
+delete myRandom;
+
+try &osb;
+    document.write(myRandom + " still exists!<br />"); 
+&csb; catch(e) &osb;
+    document.write("Doesn't exist!<br />"); //will execute
+&csb;
+
+</script>

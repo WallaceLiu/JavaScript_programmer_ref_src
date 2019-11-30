@@ -1,0 +1,26 @@
+<html>
+<head></head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            I am inside a div.
+        </div>	
+    </div>
+
+<script type="text/javascript">
+var div1 = document.getElementById("div1");
+var div2 = document.getElementById("div2");
+
+div1.addEventListener("click", eventHandler1, true);
+div2.addEventListener("click", eventHandler2, false);
+
+div1.addEventListener("click", eventHandler3, false);
+div2.addEventListener("click", eventHandler4, true);
+
+function eventHandler1() {}
+function eventHandler2() {}
+function eventHandler3() {}
+function eventHandler4() {}
+</script>
+</body>
+</html>

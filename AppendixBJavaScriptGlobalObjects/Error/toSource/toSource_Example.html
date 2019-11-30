@@ -1,0 +1,11 @@
+<script>
+
+try &osb;
+   x = y   // Cause an error.
+&csb; catch(e)&osb;   // Create local variable e.
+    document.write(e.toString() + "<br />")   // Prints "ReferenceError: y is not defined"
+    var newError = eval(e.toSource());
+    document.write(newError.toString()); // Prints "ReferenceError: y is not defined"
+&csb;
+
+</script>

@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function Animal(group, gender) {
+	this.group = group;
+	this.gender = gender;
+}
+Animal.prototype = {
+    group: "",
+    gender: "",
+    eat: function() {
+        return "Yum, food! nom nom";
+    },
+    sleep: function() {
+        return "zzzzzzzz..";
+    }
+}
+
+function iLaysEggs() {
+	this.buildNest = function() {};
+	this.lay = function(howMany) {};
+}
+
+function Bird(gender) {
+	iLaysEggs.call(this);
+	Animal.call(this,"bird", gender);
+}
+Bird.prototype = new Animal();
+Bird.prototype.fly = function() {
+    return "flap flap flap!";
+}
+
+Bird.prototype.constructor = Bird;
+
+var flamingo = new Bird();
+
+flamingo.lay();
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<customers>
+    <customer id="123">
+        <name>Alexei White</name>
+        <birthdate>March 10, 1980</birthdate>
+        <email>me@domainhidden.com</email>
+        <phone>604-555-5555</phone>
+        <pets>
+            <pet>
+                <name>Sparky</name>
+                <animal>Cat</animal>
+            </pet>
+        </pets>
+    </customer>
+    <customer id="124">
+        <name>Tyson Lambert</name>
+        <birthdate>January 13, 1979</birthdate>
+        <email>ty@domainhidden.com</email>
+        <phone>604-545-5555</phone>
+        <pets>
+            <pet>
+                <name>Jimbo</name>
+                <animal>Snake</animal>
+            </pet>
+        </pets>
+    </customer>
+</customers>

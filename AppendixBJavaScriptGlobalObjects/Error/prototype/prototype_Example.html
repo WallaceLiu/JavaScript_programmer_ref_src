@@ -1,0 +1,29 @@
+<script>
+
+// Here we make a function that will try to determine if this is an
+// 'undefined' type of error
+
+// Note: in Google Chrome (V8) this is a ReferenceError, but the prototype still works.
+
+function isUndefinedError() &osb;
+    if (this.description) &osb;
+        // IE
+        if (this.description.indexOf('undefined') > -1)
+            return true;
+    &csb; else &osb;
+        //Moz
+        if (this.message.indexOf('not defined') > -1)
+            return true;
+    &csb;
+    return false;
+&csb;
+
+Error.prototype.isUndefinedError = isUndefinedError;
+
+try &osb;
+   x = y   // Cause an error.
+&csb; catch(e)&osb;   // Create local variable e.
+   document.write(e.isUndefinedError())   // Prints "true".
+&csb;
+
+</script>

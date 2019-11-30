@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+<input type="text" id="myTB">
+<script type="text/javascript">
+function handleScroll(e) {
+    // When in quirks mode, body.scrollX is used, otherwise documentElement.scrollX is used
+    var scrollLeft = document.body.scrollLeft + document.documentElement.scrollLeft;
+    var scrollTop = document.body.scrollTop + document.documentElement.scrollTop;
+
+    // Put the result into the text box at the top of the page
+    document.getElementById("myTB").value = scrollLeft + "," + scrollTop
+}
+
+if (document.attachEvent)
+    window.attachEvent("onscroll", handleScroll);
+else
+    window.addEventListener("scroll", handleScroll, false);	
+</script>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>

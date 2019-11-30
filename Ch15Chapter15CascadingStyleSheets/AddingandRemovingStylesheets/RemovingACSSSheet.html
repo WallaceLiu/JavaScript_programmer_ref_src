@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Disabling A CSS Sheet</title>
+	<style type="text/css">
+	h1 { font-size:10px;}
+	</style>
+	<link rel="stylesheet" type="text/css" href="rmain.css" />
+</head>
+<body>
+<script type="text/javascript">
+function disableSheet(index) {
+	var sheet = document.styleSheets[index];
+	var containerEl = sheet.ownerNode || sheet.owningElement;
+	if (containerEl)
+		containerEl.parentNode.removeChild(containerEl);
+}
+</script>
+<h1>Hello</h1>
+<button onclick="disableSheet(0)">Disable the first Sheet</button>
+</body>
+</html>

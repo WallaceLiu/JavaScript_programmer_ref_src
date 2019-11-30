@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function Person( firstname, lastname, age ) {
+    if (firstname)
+        this.firstname = firstname;
+    if (lastname)
+        this.lastname = lastname;
+    if (age)
+        this.age = age;
+}
+
+var dave = new Person("Dave", "Smith", 28);
+
+document.write( dave.firstname );    // "Dave"
+</script>
+</body>
+</html>

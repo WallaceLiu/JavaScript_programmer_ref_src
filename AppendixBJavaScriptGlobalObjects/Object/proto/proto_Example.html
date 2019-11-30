@@ -1,0 +1,18 @@
+<script>
+
+function Shape() &osb;
+  this.borderWidth = 5;
+&csb;
+
+function Square() &osb;
+  this.edge = 12;
+&csb;
+
+Square.prototype = new Shape;
+
+myPicture = new Square;
+
+document.write(myPicture.__proto__ + "<br />"); //[object Object]
+document.write(myPicture.borderWidth); // 5
+
+</script>

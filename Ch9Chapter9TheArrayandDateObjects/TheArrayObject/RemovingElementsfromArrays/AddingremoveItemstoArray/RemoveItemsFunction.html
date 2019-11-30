@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+Array.prototype.removeItems = function(start, end) {
+    // first check to see if there is any need to do anything
+    if (this.length > 0) {
+        // this chops off the end into a separate var
+        var remainder = this.slice((start || end) + 1 || this.length);
+        // this shortens the array.. we'll add the end back in a second
+        this.length = start < 0 ? this.length + start : start;
+        // now we add the end back and return the new length
+        return this.push.apply(this,remainder);
+    } else return 0;
+}
+
+// let's create an array for testing
+var myNumArray = [1,2,3,4,5,6,7];
+
+myNumArray.removeItems(2);
+
+document.write( myNumArray.toString() + "<br />"); // 1,2,4,5,6,7
+
+// remove the fourth-from-last item in the array
+myNumArray.removeItems(-3);
+
+// remove the fourth-from-last to the second-from-last item
+myNumArray.removeItems(-3,-1);
+
+document.write( myNumArray.toString() + "<br />");
+// 1,2,6,7
+</script>
+</body>
+</html>

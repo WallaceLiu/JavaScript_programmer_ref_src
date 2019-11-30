@@ -1,0 +1,17 @@
+<script>
+
+var rgex = new RegExp("d(b+)(d)","ig");
+var str = "dsfcdbBdbfsdsbdbdfdsz";
+var arr = rgex.exec(str);
+var res = "$1 has: " + RegExp.$1 + " <br />";
+res += "$2 has: " + RegExp.$2 + " <br />";
+res += "$3 has: " + RegExp.$3;
+document.write(res);
+
+/*
+$1 has: bB
+$2 has: d
+$3 has:
+*/
+
+</script>

@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Building a high-performance string "concatenator" with a simulated private function
+var StringBuilder = (function() {
+  var privateArray = new Array();
+  function privateAppend(str) {
+    privateArray[privateArray.length] = str;
+  }
+  return {
+    add: function(str) {
+      privateAppend(str);
+    },
+    value: function() {
+      return privateArray.join("");
+    }
+  }   
+})();
+
+// First we show that the string is empty
+document.write("Our String: " + StringBuilder.value() + "<br />"); // "Our String: "
+
+StringBuilder.add("Super");
+StringBuilder.add("Cala");
+StringBuilder.add("Frajalistic");
+
+// Now we display the finished concatenated string
+document.write("Our String: " + StringBuilder.value() + "<br />"); // "Our String: SuperCalaFrajalistic"
+</script>
+</body>
+</html>

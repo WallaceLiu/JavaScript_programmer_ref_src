@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Adding an improved typeof feature to our Object class
+Object.prototype.getType = function() {
+    if (typeof(this) == "object") {
+        if (this.constructor == Array) return "array";
+        if (this.constructor == Date) return "date";
+        if (this.constructor == RegExp) return "regex";
+        return "object";
+    }
+    return typeof(this);	
+}
+// Testing our new getType() function
+var myArray = new Array();
+var myObj = new Object();
+var myRegex = new RegExp();
+var myDate = new Date();
+
+document.write(myArray.getType() + "<br />");    // "array"
+document.write(myObj.getType() + "<br />");    // "object"
+document.write(myRegex.getType() + "<br />");    // "regex"
+document.write(myDate.getType() + "<br />");    // "date"
+</script>
+</body>
+</html>

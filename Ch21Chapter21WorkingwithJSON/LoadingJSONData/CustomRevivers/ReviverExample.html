@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>JSON.parse() Reviver Example</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<script type="text/javascript" src="/json2.js" ></script>
+</head>
+
+<body>
+<h1>JSON.parse() Reviver Example</h1>
+<div id="result"></div>
+<script type="text/javascript">
+
+var jsonString = "[{\"name\": \"Alexei White\",\"age\": 29,\"spam\": false, \"birthdate\":\"1980-03-10T12:00:00Z\"},{\"name\": \"Tyson Lambert\",\"age\": 29,\"spam\": true, \"birthdate\":\"1979-05-21T12:00:00Z\"}]";
+
+var jsonObj = JSON.parse(jsonString, function(key, value) {
+	if (typeof value == "string")
+		if (value.length == 20 && value.substring(19) == "Z") {
+			// It's probably a date, split it up into it's component parts
+			var dateArray = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/.exec(value);
+			return new Date(Date.UTC(+dateArray[1], +dateArray[2] - 1, +dateArray[3], +dateArray[4], +dateArray[5], +dateArray[6]));
+		}
+	// otherwise just return the value
+	return value;
+});
+
+document.write( jsonObj[0].birthdate ); // "Mon Mar 10 1980 04:00:00 GMT-0800 (PST)"
+
+</script>
+</body>
+</html>
+

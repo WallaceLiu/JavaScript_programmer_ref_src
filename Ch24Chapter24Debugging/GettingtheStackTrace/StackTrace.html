@@ -1,0 +1,49 @@
+<html>
+<head></head>
+<body>
+<script type="text/javascript">
+
+function getStackTrace(errObj) {
+	function pieceTogetherStack(funct) {
+		if (!funct)
+			return "";
+		function functionName(fn) {
+			if (/function (\w+)/.test(fn.toString()))
+				return RegExp.$1;
+			return "";
+		}
+		
+		var res = functionName( funct ) + "(";
+
+		for (var i = 0; i < funct.arguments.length; i++) {
+			res += funct.arguments[i].toString();
+			if (i+1 < funct.arguments.length) res += ", ";
+		}
+
+		return res + ")\n" + pieceTogetherStack(funct.caller);		
+	}
+	var sTrace = errObj.stack || pieceTogetherStack(getStackTrace.caller);
+	return sTrace;
+}
+
+function funcA(num) {
+	funcB(num*2);
+}
+function funcB(num) {
+	funcC(num*2);
+}
+function funcC(num) {
+	try {
+		nonexistent.method();
+	} catch(err) {
+		// alert the trace
+		console.log( getStackTrace(err) );
+	}
+}
+
+// Set the whole thing off
+funcA(10);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myString = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+var myArray = myString.split(" ");
+
+for (var i = 0; i < myArray.length; i++)
+	document.write(myArray[i] + "<br />");
+	
+/*
+Output:
+Lorem
+ipsum
+dolor
+sit
+amet,
+consectetur
+adipisicing
+elit,
+sed
+do
+eiusmod
+tempor
+incididunt
+ut
+labore
+et
+dolore
+magna
+aliqua.
+*/
+
+document.write("<br />"); // create a space
+
+myArray = myString.split(/[^a-z]+/gi);
+
+for (var i = 0; i < myArray.length; i++)
+	document.write(myArray[i] + "<br />");
+
+// Now the punctuation has also been removed
+
+/*
+Output:
+Lorem
+ipsum
+dolor
+sit
+amet
+consectetur
+adipisicing
+elit
+sed
+do
+eiusmod
+tempor
+incididunt
+ut
+labore
+et
+dolore
+magna
+aliqua
+*/
+</script>
+</body>
+</html>

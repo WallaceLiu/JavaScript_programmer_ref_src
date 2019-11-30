@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.contains = function(str) {
+	if (str)
+		if (str instanceof RegExp)
+			return str.test(this);
+		else
+			return (this.indexOf(str) > -1);
+}
+
+var myString = "Both Java and JavaScript share the same name, but are quite different.";
+
+document.write( myString.contains(/Java(Script)?/g) + "<br />");	// true
+document.write( myString.contains("share") + "<br />");	// true
+document.write( myString.contains("not present") + "<br />");	// false
+</script>
+</body>
+</html>

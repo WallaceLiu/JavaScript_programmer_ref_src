@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.left = function(count) {
+	return this.slice(0, count);
+}
+
+String.prototype.right = function(count) {
+	return this.slice(-count);
+}
+
+var myString = "The quick brown fox.";
+
+document.write( myString.left(10) + "<br />"); // "The quick"
+
+document.write( myString.right(10) ); // "brown fox."
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myObj1 = {a:123,b:"hello"};
+var myObj2 = {a:123,b:"hello"};    // Identical to the first object
+var myObj3 = myObj1;
+
+document.write(myObj1 == myObj2);    // false
+document.write(myObj1 >= myObj2);    // false
+document.write(myObj1 <= myObj2);    // false
+document.write(myObj1 == myObj3);    // true because they share the same reference
+
+document.write(myObj1 == "[object Object]");    // true on Mozilla
+</script>
+</body>
+</html>

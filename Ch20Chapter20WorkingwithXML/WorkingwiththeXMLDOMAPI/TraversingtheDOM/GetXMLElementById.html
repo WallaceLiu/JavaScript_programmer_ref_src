@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>XML Get Element By Attribute Example</title>
+</head>
+<body>
+<h1>XML Get Element By Attribute Example</h1>
+<textarea id="result" cols="60" rows="10"></textarea>
+<script type="text/javascript">
+function parseXML(str) {
+    if ('\v' == 'v') {
+        //Internet Explorer
+        var xmlNames = ["Msxml2.DOMDocument.6.0", "Msxml2.DOMDocument.4.0", "Msxml2.DOMDocument.3.0", "Msxml2.DOMDocument", "Microsoft.XMLDOM", "Microsoft.XmlDom"];
+        for (var i = 0; i < xmlNames.length; i++) {
+            try {
+                var xmlDoc = new ActiveXObject(xmlNames[i]);
+                break;
+            } catch(e) {}
+        }
+        xmlDoc.async = false;
+        xmlDoc.loadXML(str);
+    } else {
+        try  {
+            //Firefox, Mozilla, Opera, Webkit.
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(str,"text/xml");
+        } catch(x) {
+            alert(x.message);
+            return;
+        }
+    }
+    return xmlDoc;
+}
+
+var xmlStr = "<customers><customer id=\"123\"><name>Alexei White</name><birthdate>March 10, 1980</birthdate><email>me@domainhidden.com</email><phone>604-555-5555</phone><pets><pet><name>Sparky</name><animal>Cat</animal>            </pet></pets></customer><customer id=\"124\"><name>Tyson Lambert</name><birthdate>January 13, 1979</birthdate><email>ty@domainhidden.com</email><phone>604-545-5555</phone><pets><pet><name>Jimbo</name><animal>Snake</animal>            </pet></pets></customer></customers>";
+
+var xmlDOM = parseXML(xmlStr);
+
+function getElementByIdXML(rootnode, id) {
+	// Get all the elements in the document
+	nodeTags = rootnode.getElementsByTagName('*');
+	for (i=0;i<nodeTags.length;i++) {
+		if (nodeTags[i].hasAttribute('id')) {
+			// is the ID attribute equal to Id? Is so, return it
+			if (nodeTags[i].getAttribute('id') == id)
+				return nodeTags[i];
+		}
+	}
+}
+
+var customerNode = getElementByIdXML(xmlDOM, "124");
+
+// reserialize back to text.
+if (xmlDOM.xml) {
+	document.getElementById("result").value = customerNode.xml;
+} else {
+	var serializer  = new XMLSerializer();
+	document.getElementById("result").value = serializer.serializeToString(customerNode);
+}
+
+</script>
+</body>
+</html>

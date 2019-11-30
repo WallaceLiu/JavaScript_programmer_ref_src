@@ -1,0 +1,24 @@
+<script>
+
+function Person(name, age) &osb;
+    this.fname = name;
+    this.fage = age;
+    document.write("This is a " + age + " old person named " + name);
+&csb;
+
+function Superhero(name, age, specialpower)
+&osb;
+    this.specialpower = specialpower;
+    Person.call(this, name, age);
+    document.write(".. who has special powers like " + this.specialpower);
+    
+    // and we check to see if the this.fname property has been applied
+    
+    document.write(".. and don't forget his name is " + this.fname + ".");
+&csb;
+
+Superhero("Mike Han", 26, "Foosball");
+
+// This is a 26 old person named Mike Han.. who has special powers like Foosball.. and don't forget his name is Mike Han.
+
+</script>

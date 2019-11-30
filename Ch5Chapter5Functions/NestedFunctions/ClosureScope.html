@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrating the scope properties of closures
+function addFive(theVal) {
+    function addNumber(howmany) {
+        return theVal+howmany;
+    }
+    return addNumber(5);
+}
+document.write( addFive(15) );    // 20
+</script>
+</body>
+</html>

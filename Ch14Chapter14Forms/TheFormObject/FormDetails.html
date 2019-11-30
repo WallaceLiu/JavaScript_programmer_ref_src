@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Form Object Details</title>
+</head>
+<body>
+	<form
+	    id="signupForm"
+	    name="signupForm"
+	    action="signup.php"
+	    enctype="application/x-www-form-urlencoded"
+	    method="post"
+	    target="_self" >
+
+		Text Field: <input type="text" name="username" value="some data">
+	    <!-- FORM CONTENTS GO HERE -->
+
+	</form>
+	<h3>Form Details</h3>
+	<script type="text/javascript">
+
+    // Get a reference using the forms collection
+    var fobj = document.forms["signupForm"];
+    document.write("elements: " + fobj.elements + "<br />");
+	document.write("length: " + fobj.length + "<br />");
+	document.write("name: " + fobj.name + "<br />");
+	document.write("acceptCharset: " + fobj.acceptCharset + "<br />");
+	document.write("action: " + fobj.action + "<br />");
+	document.write("enctype: " + fobj.enctype + "<br />");
+	document.write("encoding: " + fobj.encoding + "<br />");
+	document.write("method: " + fobj.method + "<br />");
+	document.write("target: " + fobj.target);
+
+	</script>
+</body>
+</html>
+

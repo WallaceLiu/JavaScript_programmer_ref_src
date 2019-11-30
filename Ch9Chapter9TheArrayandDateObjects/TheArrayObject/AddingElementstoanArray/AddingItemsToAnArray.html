@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myArray = [];
+
+myArray[myArray.length] = "Hello";
+myArray[myArray.length] = "World";
+
+document.write( myArray.length + "<br />");    // 2
+
+myArray[99999] = "I'm way out there!";
+
+document.write( myArray.length + "<br />");    // 100000
+
+myArray.push("Another Item", "yet another item", true, 213);
+
+document.write( myArray.length + "<br />");    // 100004
+</script>
+</body>
+</html>

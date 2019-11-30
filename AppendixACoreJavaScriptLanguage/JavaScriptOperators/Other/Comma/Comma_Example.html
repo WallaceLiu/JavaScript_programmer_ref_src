@@ -1,0 +1,13 @@
+<script>
+
+// Lets use the comma operator to string instructions together
+
+var a = (b = 8, c = 2); // a now equals 2 which is the last instruction
+
+document.write("a = " + a + "<br />"); // 2
+document.write("b = " + b + "<br />"); // 8
+document.write("c = " + c + "<br />"); // 2
+
+document.write("a = " + a, " b = " + b, " c = " + c, "<br />"); // a = 2 b = 8 c = 2
+
+</script>

@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Basic Ranges</title>
+</head>
+<body>
+	<p id="myShortParagraph">I'm a <b>paragraph</b>!</p>
+
+	<script type="text/javascript">
+		// First check to see if the browser support W3C DOM2 Ranges
+		var w3Range = document.implementation.hasFeature("Range", "2.0");
+		//debugger;
+		// Now let's create a simple range
+		var pRange;
+		if (w3Range) {
+			// W3C Range
+			pRange = document.createRange();
+		} else {
+			// IE TextRange
+			pRange = document.body.createTextRange();
+		}
+		
+		// Set a range to a particular node
+		if (w3Range) {
+			// We could also use selectNodeContents here which would just hold the interior
+			pRange.selectNode(document.getElementById('myShortParagraph'));
+		} else {
+			// IE
+			pRange.moveToElementText(document.getElementById('myShortParagraph'));
+		}
+		
+		// Get the contents of the node
+		var rangeContents;
+		if (w3Range) {
+			rangeContents = pRange.toString();
+		} else {
+			// IE
+			rangeContents = pRange.text;
+		}
+	</script>
+</body>
+</html>

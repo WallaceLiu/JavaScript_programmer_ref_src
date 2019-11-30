@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Replacing Nodes</title>
+</head>
+<body>
+    <div>
+        <p id="myParagraph">This is a test</p>
+    </div>
+
+	<script type="text/javascript">
+		var newParagraph = document.createElement("p");
+		newParagraph.innerText = "I'm a new node!";
+		newParagraph.textContent = "I'm a new node!";
+	
+		var oldParagraph = document.getElementById("myParagraph");
+		oldParagraph.parentNode.replaceChild(newParagraph, oldParagraph);
+	</script>
+</body>
+</html>

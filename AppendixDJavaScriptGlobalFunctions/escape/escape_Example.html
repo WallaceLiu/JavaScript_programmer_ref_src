@@ -1,0 +1,11 @@
+<script>
+
+var myString="£€&?@ And this is some test text";
+
+document.write(escape(myString) + "<br />"); 
+// %A3%u20AC%26%3F@%20And%20this%20is%20some%20test%20text
+
+document.write(unescape(escape(myString))); 
+// £€&?@ And this is some test text
+
+</script>

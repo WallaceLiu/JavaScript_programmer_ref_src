@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>XML Parsing Example</title>
+</head>
+
+<body>
+<h1>XML Parsing Example</h1>
+<p id="result"></p>
+<script type="text/javascript">
+function parseXML(str) {
+	try {
+		//Internet Explorer
+		var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+		xmlDoc.async = false;
+		xmlDoc.loadXML(str);
+	} catch(e) {
+		try  {
+			//Firefox, Mozilla, Opera, Webkit.
+			var parser = new DOMParser();
+			var xmlDoc = parser.parseFromString(str,"text/xml");
+		} catch(x) {
+			alert(x.message);
+			return;
+		}
+	}
+	return xmlDoc;
+}
+
+var xmlStr = "<customer><name>Alexei White</name><birthdate>March 10, 1980</birthdate><email>me@domainhidden.com</email><phone>604-555-5555</phone></customer>";
+
+var xmlDOM = parseXML(xmlStr);
+
+document.getElementById("result").innerHTML = xmlDOM.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+
+</script>
+</p>
+</body>
+</html>

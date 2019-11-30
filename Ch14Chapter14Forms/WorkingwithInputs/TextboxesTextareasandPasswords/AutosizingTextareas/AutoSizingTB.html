@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>AutoSizing Textarea</title>
+</head>
+<body>
+<form>
+<textarea id="myArea" cols="50" rows="5" onkeyup="checktbHeight(this)">
+</textarea>
+
+<script type="text/javascript">
+
+function checktbHeight(tObj) {
+	if (tObj.scrollHeight > tObj.offsetHeight) {
+		tObj.style.height = (tObj.scrollHeight+10)+"px";
+	}
+}
+</script>
+</form>
+</body>
+</html>

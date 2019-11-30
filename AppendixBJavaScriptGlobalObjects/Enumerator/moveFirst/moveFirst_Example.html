@@ -1,0 +1,20 @@
+<script>
+
+var myArray = new Array("apple", "orange", "tree", "couch", "veranda");
+
+var eNum = new Enumerator(myArray);          //Create Enumerator on the Array.
+
+var result = "";
+
+for (;!eNum.atEnd();eNum.moveNext())           //Enumerate our collection.
+   &osb;
+      var x = eNum.item();
+      result += x + ",";
+   &csb;
+
+document.write(result);
+
+// Output:
+// apple,orange,tree,couch,veranda
+
+</script>

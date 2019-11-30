@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function setOnClick(obj) {
+    obj.onclick = clickHandler;
+}
+
+function clickHandler() {
+    alert('hello!');
+}
+
+var myDivObj = document.getElementById('myDiv');
+setOnClick(myDivObj);
+</script>
+</body>
+</html>

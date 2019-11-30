@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Using an object hash to send arbitrary arguments to a function.
+function describeBook(args) {
+    document.write("Name: " + args.name + "<br />");
+    document.write("Pages: " + args.pages + "<br />");
+    document.write("Chapters: " + args.chapters + "<br />");
+    document.write("Author: " + args.author + "<br />");
+    document.write("Publish Date: " + args.published + "<br />");
+    document.write("Type: " + args.type + "<br />");
+    document.write("Section: " + args.section + "<br />");
+}
+
+describeBook({name:'Gone with the Wind', pages:1021, chapter:22, author: 'Margaret Mitchell', published: '1936', type: 'Paperback', section: 'Historical Fiction'});
+</script>
+</body>
+</html>

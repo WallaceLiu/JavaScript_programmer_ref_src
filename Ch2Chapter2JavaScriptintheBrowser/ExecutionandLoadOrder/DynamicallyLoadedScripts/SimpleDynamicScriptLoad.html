@@ -1,0 +1,18 @@
+<!-- Dynamically loading an external JavaScript document -->
+<html>
+<head>
+<script type="text/javascript">
+function loadScript(src) {
+    var headObj = document.getElementsByTagName("head")[0];         
+    var newScriptObj = document.createElement('script');
+    newScriptObj.type = 'text/javascript';
+    newScriptObj.src = src;
+    headObj.appendChild(newScriptObj);
+}
+</script>
+</head>
+<body>
+    <h1>Dynamic Script Loading Example</h1>
+    <button onclick="loadScript('/javascripts/test.js');">Click me to load an external script file!</button>
+</body>
+</html>

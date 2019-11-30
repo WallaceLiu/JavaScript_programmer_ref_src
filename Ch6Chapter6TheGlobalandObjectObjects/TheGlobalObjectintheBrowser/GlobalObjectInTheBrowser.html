@@ -1,0 +1,24 @@
+<html>
+<!-- Demonstrating the nature of the global and window objects -->
+<head></head>
+<body>
+<script>
+
+var myVar = "Hello";
+
+function checkVars1() {
+    document.write("checkVars1: Checking myVar: " + myVar + "<br />");	// "Hello"
+}
+
+function checkVars2() {
+    var myVar = "World";
+    document.write("checkVars2: Checking myVar: " + myVar + "<br />"); // "World"
+    document.write("checkVars2: Checking window.myVar: " + window.myVar + "<br />");	// "Hello"
+}
+
+checkVars1();
+checkVars2();
+
+</script>
+</body>
+</html>

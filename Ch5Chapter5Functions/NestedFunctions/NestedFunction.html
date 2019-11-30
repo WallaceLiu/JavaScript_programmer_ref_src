@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Nesting functions
+function addSquare(a,b) {
+    function multiply(x,y) {
+        return x*y;
+    }
+    return multiply((a+b),(a+b));
+}
+document.write( addSquare(3,4) );     // 49
+</script>
+</body>
+</html>

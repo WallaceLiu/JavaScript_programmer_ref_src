@@ -1,0 +1,37 @@
+<script>
+
+var myArray = new Array("cable", "zebra", "apple", "dart", "bow", 29, "elephant");
+
+// By calling sort, all items will be sorted alphabetically with '29' at the beginning
+myArray.sort();
+
+// We can also pass it a function to do a custom sort algorithm. In this case, by length
+
+function customSortbyLength(item1, item2) &osb;
+    // we should return 1 if they are in the right order
+    // return -1 if they are in the wrong order
+    // if they are equivilent, return 0
+    
+    // First we make sure they are strings
+    item1 = item1.toString();
+    item2 = item2.toString();
+    
+    if (item1.length == item2.length)
+        return 0;
+        
+    if (item1.length < item2.length)
+        return -1;
+        
+    if (item1.length > item2.length)
+        return 1;
+&csb;
+
+
+// By calling sort, all items will be sorted by this function
+myArray.sort(customSortbyLength);
+
+// now myArray looks like: two,three,four
+
+document.write(myArray.join(',')); 
+
+</script>

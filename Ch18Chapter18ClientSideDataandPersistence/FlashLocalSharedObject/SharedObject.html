@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+<object classid="clsid:d8394dsf-sdf3f-324d-df3s-32423443242" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swfflash.cab#version=9,0,0,0" width="1" height="1" id="storageMovie" align="middle">
+    <param name="movie" value="sharedobject.swf" />
+    <param name="allowScriptAccess" value="always" />
+    <embed src="sharedobject.swf" allowScriptAccess="always" quality="high" width="1" height="1" name="storageMovie" align="middle" type="application/x-shockwave-flash" pluginspace="http://www.macromedia.com/go/getflashplayer" />
+</object>
+
+<script type="text/javascript">
+// gets a movie reference by ID
+function getMovie(movieID) {
+    if ('' == 'v') {
+        // IE
+        return window[movieID];
+    } else {
+        return document[movieID];
+    }
+}
+
+function saveData(store, key, value) {
+    getMovie('storageMovie').saveData(store, key, value);
+}
+
+function loadData(store, key) {
+    getMovie('storageMovie').loadData(store, key);
+}
+</script>
+
+</body>
+</html>

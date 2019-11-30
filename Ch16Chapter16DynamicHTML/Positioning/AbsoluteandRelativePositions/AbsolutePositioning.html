@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Position Something Absolutely</title>
+	<script type="text/javascript">
+	
+	function yankOut(elId) {
+		var elObj = document.getElementById(elId);
+		elObj.style.position = "absolute";
+		elObj.style.left = "10px";
+		elObj.style.top = "10px";
+	}
+		
+	</script>
+</head>
+<body>
+<p id="para1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p id="para2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p id="para3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<button onclick="yankOut('para2')">Yank out the second paragraph.</button>
+</body>
+</html>

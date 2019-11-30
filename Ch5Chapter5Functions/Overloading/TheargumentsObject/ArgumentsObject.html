@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Using the arguments object to read any and all parameters passed to a function
+function myFunction() {
+	for (var i = 0; i < arguments.length; i++) {
+		document.write(i + ": " + arguments[i] + "<br />");
+	}
+}
+myFunction("Hello", 21, new Date());
+</script>
+</body>
+</html>

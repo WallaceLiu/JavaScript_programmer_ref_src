@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>XHR POST Demo</title>
+</head>
+<body>
+<h1>XHR POST Demo</h1>
+<script type="text/javascript">
+var XHR = function() {
+    if( typeof XMLHttpRequest == "undefined" ) {
+        var xhrNames = ["MSXML2.XMLHTTP.6.0", "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP", "Microsoft.XMLHTTP"];
+        for (var i = 0; i < xhrNames.length; i++) {
+            try {
+                var XHR = new ActiveXObject(xhrNames[i]);
+		break;
+            } catch(e) {}
+        }
+        if (typeof XHR != undefined)
+            return XHR;
+        else
+            new Error("Ajax not supported!");
+    } else {
+        return new XMLHttpRequest();
+    }
+}
+
+var myXhr = new XHR();
+
+myXhr.onreadystatechange = handleStatusChange;
+
+myXhr.open("post", "data.html", true);
+
+function keyValuePair(key, value) {
+    return encodeURIComponent(key) + "=" + encodeURIComponent(value);
+}
+
+myXhr.send( keyValuePair("hello", "world!=\n") + "&" + keyValuePair("apple", "sauce") );
+
+function handleStatusChange() {
+    if (myXhr.readyState == 4) {
+        // Transfer is finished!
+        alert("Transfer complete!\n\nContents:\n" + myXhr.responseText);
+    }
+}
+</script>
+</body>
+</html>

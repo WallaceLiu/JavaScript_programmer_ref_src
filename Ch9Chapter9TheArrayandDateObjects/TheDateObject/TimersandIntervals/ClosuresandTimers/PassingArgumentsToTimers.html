@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var alarmArray = [
+	{time: 5000, description: "Call Lara."},
+	{time: 15000, description: "Feed the cat."},
+	{time: 25000, description: "Watch Fringe on Fox."}
+];
+
+for (var i = 0; i < alarmArray.length; i++) {
+    setTimeout( function(a) { 
+        return function() {
+            alert(alarmArray[a].description);
+        }
+    }(i), alarmArray[i].time);
+}
+
+// alternatively:
+function goAlarm(a) {
+	return function() {
+		alert(alarmArray[a].description);
+	}
+}
+
+// Now loop over them again but execute the goAlarm() function instead of the anonymous one
+for (var i = 0; i < alarmArray.length; i++) {
+	setTimeout( goAlarm(i), alarmArray[i].time);
+}
+</script>
+</body>
+</html>

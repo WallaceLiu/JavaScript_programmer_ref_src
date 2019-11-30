@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>OnSubmit Events</title>
+</head>
+<body>
+<form
+id="signupForm"
+name="signupForm"
+action="signup.php">
+<input type=submit>
+</form>
+
+<script type="text/javascript">
+function validateForm(e) {
+
+	if (e.preventDefault)
+		e.preventDefault();
+	else
+		e.returnValue = false;
+}
+
+
+if (document.attachEvent)
+	document.getElementById("signupForm").attachEvent("onsubmit", validateForm);
+else
+	document.getElementById("signupForm").addEventListener("submit", validateForm, true);
+	
+
+</script>
+</body>
+</html>
+

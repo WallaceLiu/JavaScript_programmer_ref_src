@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Lets create an object with a few properties
+var myNewObject = { property1:213, property2: true, property3: "Hello World"};
+
+// And now we iterate over the members of the object
+// Note that in this case "key" is the property name, and myNewObject[key] is the value
+for (key in myNewObject) {
+	document.write("myNewObject." + key + ": " + myNewObject[key] + "<br />" );
+}
+
+/*
+Output:
+myNewObject.property1: 213
+myNewObject.property2: true
+myNewObject.property3: Hello World
+*/
+</script>
+</body>
+</html>

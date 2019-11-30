@@ -1,0 +1,12 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+myProperty = "Hello.";    // Implicitly create a global property
+document.write(typeof myProperty + "<br />");	// "string"
+delete window.myProperty;
+document.write(typeof myProperty + "<br />");	// "undefined"
+</script>
+</body>
+</html>

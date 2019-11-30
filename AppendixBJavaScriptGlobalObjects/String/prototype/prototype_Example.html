@@ -1,0 +1,17 @@
+<script>
+
+// Create a function that removes non alpha numeric characters from a string
+function stripNonAlpha() &osb;
+    return this.replace(/[^a-zA-Z 0-9]+/g,'');
+&csb;
+
+// extend the string prototype to include it
+String.prototype.stripNonAlpha = stripNonAlpha;
+
+// create a string object
+var myString = "This is a @#$# test!";
+
+// test the method
+document.write(myString.stripNonAlpha()); // This is a test
+
+</script>

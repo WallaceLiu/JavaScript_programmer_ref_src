@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Getting the Computed Style</title>
+    <style type="text/css">
+        .myCSSClass {
+            background-color: yellow;
+            border: 1px dotted black;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+function computeStyle(myDivID, styleAttr) {
+    var elObj = document.getElementById(myDivID);
+    if (elObj.currentStyle)
+        var computed = elObj.currentStyle;
+    else
+        var computed = document.defaultView.getComputedStyle(elObj, null);
+	
+    return computed[styleAttr];
+}
+</script>
+<body>
+
+<div class="myCSSClass" id="myDiv">
+Our widgets are rated by the international widget rating academy to be 22% faster and more durable than other leading widgets. Try our free sample and find out for yourself!
+</div>
+<button onclick="alert(computeStyle('myDiv', 'backgroundColor'));">Get the Computed Style of the background</button>
+</body>
+</html>

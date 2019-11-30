@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function myFunction(){
+	var elObj = document.getElementById("myDiv");
+	elObj.onclick = myNewFunction;
+}
+
+function myNewFunction() {
+	alert("I don't even USE closures anymore!");
+}
+
+myFunction();
+</script>
+</body>
+</html>

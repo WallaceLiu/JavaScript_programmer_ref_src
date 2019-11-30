@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var Animal = function(thename) {this.fur=true;this.scales=false;this.name='Generic'; if (thename){this.name=thename;}};
+
+var cat = new Animal('cat');
+var unknown_animal = new Animal();    // the default name is 'Generic'
+
+document.write(cat.name); // "cat"
+document.write(unknown_animal.name);    // "Generic"
+</script>
+</body>
+</html>

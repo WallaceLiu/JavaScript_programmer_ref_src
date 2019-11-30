@@ -1,0 +1,14 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.encodeRegExp = function() {
+	return this.replace(/([*+-.?^${}()|[\]\/\\])/g, '\\$1');
+}
+
+document.write( "[] + ? + ^ { $ }".encodeRegExp() );
+// \[\] \+ \? \+ \^ \{ \$ \} 
+</script>
+</body>
+</html>

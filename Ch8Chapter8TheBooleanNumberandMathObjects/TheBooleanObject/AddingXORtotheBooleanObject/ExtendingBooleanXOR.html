@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Adding XOR to the boolean object via its prototype
+
+Boolean.prototype.XOR=function(other){ 
+	return (this.valueOf()==true && other==false) || (other==true && this.valueOf()==false);
+}
+
+document.write(true.XOR(false) + "<br />");    // true
+document.write(false.XOR(false));    // false
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>getElementsByName() Example</title>
+</head>
+
+<body>
+<form>
+	<p>
+		What is your favorite color?: <Br />
+		<input type="radio" name="favColor" value="red"> Red<br />
+		<input type="radio" name="favColor" value="blue"> Blue<br />
+		<input type="radio" name="favColor" value="green"> Green<br />
+		<input type="radio" name="favColor" value="orange"> Orange<br />				
+	</p>
+</form>
+	<script>
+		
+		var favColorGroup = document.getElementsByName("favColor");
+		for (var cI = 0; cI < favColorGroup.length; cI++)
+			document.write("Color: " + favColorGroup[cI].value + "<br />");
+
+	</script>
+</body>
+</html>

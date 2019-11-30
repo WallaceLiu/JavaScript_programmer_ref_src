@@ -1,0 +1,15 @@
+<html>
+<head></head>
+<body>
+In-line event registration
+<div>Hi, I am div #1</div>
+<div>Hi.. I'm also a div.</div>
+<div>Don't forget me!</div>
+<script>
+var divList = document.getElementsByTagName("div");
+for (var i = 0; i < divList.length; i++) {
+	divList[i].onmouseover = function() { this.style.backgroundColor = "yellow"; };
+	divList[i].onmouseout = function() { this.style.backgroundColor = "transparent"; };
+}
+</script>
+</html>

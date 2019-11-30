@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Merging an argument object with an object literal containing default values
+function describeBook(args) {
+	var fArgs = defaults({
+		name: 'Unknown',
+		pages: 1,
+		chapters: 1,
+		author: 'John Doe',
+		published: 'Unknown',
+		type: 'Paperback',
+		section: 'Unclassified Books'
+	}, args);
+	
+	document.write("Name: " + fArgs.name + "<br />");
+	document.write("Pages: " + fArgs.pages + "<br />");
+	document.write("Chapters: " + fArgs.chapters + "<br />");
+	document.write("Author: " + fArgs.author + "<br />");
+	document.write("Publish Date: " + fArgs.published + "<br />");
+	document.write("Type: " + fArgs.type + "<br />");
+	document.write("Section: " + fArgs.section + "<br />");	
+}
+
+// Ensures that an object contains, at the very least a specific
+// list of key / value pairs with default values
+function defaults(defaultValues, originalArgs) {
+	// ensure that we are dealing with a valid object
+	if (originalArgs && typeof originalArgs == "object") 
+		for (var arg in originalArgs)
+			defaultValues[arg] = originalArgs[arg] || defaultValues[arg];
+
+	// output the new object without altering the original
+	return defaultValues;
+}
+
+describeBook({name:'Gone with the Wind', author: 'Margaret Mitchell', section:'Historical Fiction'});
+</script>
+</body>
+</html>

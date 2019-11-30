@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// let's create an array for testing
+var myNumArray = [1,2,3,4,5,6,7];
+
+// iterate over a loop using a simple for loop. 
+for (i = 0; i < myNumArray.length; i++) {
+     document.write( myNumArray[i] + "," );
+}
+// 1,2,3,4,5,6,7, 
+
+document.write("<br />");
+
+// here we cache the value of myNumArray for speed
+for (var i = 0, mylen = myNumArray.length; i < mylen; i++) {
+     document.write( myNumArray[i] + "," );
+}
+// 1,2,3,4,5,6,7, 
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Using apply to change the execution context of a function
+var person = {
+	name: "Daniel",
+	age: 12,
+	weight: "150lb",
+	describe: function(useLongDesc) {
+		document.write("Person's name: " + this.name + "<br />");
+		document.write("Person's age: " + this.age + "<br />");		
+		if (useLongDesc == true) {
+			document.write("Person's weight: " + this.weight + "<br />");	
+		}
+	}
+}
+
+var jamesBond = {
+	name: "James, James bond.",
+	age: "timeless",
+	weight: "enough"
+}
+
+person.describe.apply(jamesBond, [true]);
+</script>
+</body>
+</html>

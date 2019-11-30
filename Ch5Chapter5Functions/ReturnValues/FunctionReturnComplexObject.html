@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Returning a complex object
+function addTwoNumbers(x,y) {
+    return {result:(x+y), originalX: x, originalY: y};
+}
+var sumResult = addTwoNumbers(9,3);
+document.write("Sum: " + sumResult.result + " (comes from adding " + sumResult.originalX + " and " + sumResult.originalY + ")");
+// "Sum: 12 (comes from adding 9 and 3)"
+</script>
+</body>
+</html>

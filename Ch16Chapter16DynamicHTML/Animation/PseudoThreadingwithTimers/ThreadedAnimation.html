@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Simple Threaded Animation</title>
+	<script type="text/javascript">
+	
+	function animDiv() {
+		var divObj = document.getElementById("myDiv");
+		var divWidth = divObj.offsetWidth;
+		if (divWidth < 100) {
+			divObj.style.width = divWidth+1;
+			setTimeout(animDiv, 100);
+		}
+	
+	}
+		
+	</script>
+
+</head>
+<body>
+<div id="myDiv" style="width:50px; height:100px; border:1px solid black;"></div>
+<button onclick="animDiv()">Animate the div's width.</button>
+</body>
+</html>

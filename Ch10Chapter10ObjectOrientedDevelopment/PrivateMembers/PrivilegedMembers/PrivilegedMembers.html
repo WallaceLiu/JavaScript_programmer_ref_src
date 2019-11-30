@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function Person( firstname, lastname, age ) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+	    getfullname = function() {
+	        return firstname + " " + lastname;
+	    }
+		var that = this;
+		this.sayHi = function() {
+			document.write( "Hi my name is " + getfullname() + " and I am " + that.age + " years old.");
+		}
+}
+
+var dave = new Person("Dave", "Smith", 28);
+
+dave.sayHi(); 
+// "Hi my name is Dave Smith and I am 28 years old."
+</script>
+</body>
+</html>

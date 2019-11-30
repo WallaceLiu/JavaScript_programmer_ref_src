@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.stripHTML = function() {
+	return this.replace(/<\S[^><]*>/g, "");
+}
+
+var originalString = "This <b>string<b> has some <code>HTML</code> in it.";
+
+document.write( originalString.stripHTML() );
+
+// This string has some HTML in it. 
+</script>
+</body>
+</html>

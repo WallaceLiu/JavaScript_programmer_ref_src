@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// A function factory that multiplies numbers
+function multiplyFactory(multiplier) {
+    return function(amount) {
+        return amount*multiplier;
+    }
+}
+var timesTen = multiplyFactory(10);
+document.write( timesTen(4) ); // 40
+</script>
+</body>
+</html>

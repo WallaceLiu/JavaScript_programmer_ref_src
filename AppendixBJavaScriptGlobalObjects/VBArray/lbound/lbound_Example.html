@@ -1,0 +1,31 @@
+<HEAD>
+<SCRIPT LANGUAGE="VBScript">
+<!--
+Function CreateAVBArray()
+   Dim arr(2, 2)
+   arr(0, 0) = "Apple"
+   arr(0, 1) = "Tree"
+   arr(1, 0) = "House"
+   arr(1, 1) = "Castle"
+       
+   CreateAVBArray = arr
+End Function
+-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JScript">
+<!--
+function writeoutLbound(vba)
+&osb;
+   var a = new VBArray(vba);
+   return a.lbound(1);
+&csb;
+-->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<SCRIPT language="jscript">
+   document.write(writeoutLbound(CreateAVBArray()));
+</SCRIPT>
+</BODY>

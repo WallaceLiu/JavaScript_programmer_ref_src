@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var SearchText = "Hi my name is Jerry and my phone number is 219-423-4432. You can also reach me at 219-482-3423, or after hours at my home: 219-843-1244.";
+var results = SearchText.match(/d{3}([- ])d{3}d{4}/g);
+
+if (results)
+     for (var i = 0; i < results.length; i++)
+          document.write(results[i] + "<br />");
+
+/*
+Output:
+219-423-4432
+219-482-3423
+219-843-1244
+*/
+</script>
+</body>
+</html>

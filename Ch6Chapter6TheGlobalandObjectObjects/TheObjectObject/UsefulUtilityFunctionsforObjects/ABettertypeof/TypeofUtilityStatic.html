@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Rewriting our improved typeof to stand as a static function and test for null
+Object.getType = function(obj) {
+    if (typeof(obj) == "object") {
+        if (obj === null) return "null";
+        if (obj.constructor == (new Array).constructor) return "array";
+        if (obj.constructor == (new Date).constructor) return "date";
+        if (obj.constructor == (new RegExp).constructor) return "regex";
+        return "object";
+    }
+    return typeof(obj);	
+}
+
+// Testing our static getType() function
+var myArray = new Array();
+var myObj = new Object();
+var myRegex = new RegExp();
+var myDate = new Date();
+var myNull = null;
+
+document.write(Object.getType(myArray) + "<br />");    // "array"
+document.write(Object.getType(myObj) + "<br />");    // "object"
+document.write(Object.getType(myRegex) + "<br />");    // "regex"
+document.write(Object.getType(myDate) + "<br />");    // "date"
+document.write(Object.getType(myNull) + "<br />");    // "null"
+</script>
+</body>
+</html>

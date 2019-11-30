@@ -1,0 +1,23 @@
+<html>
+<body>
+<h1>Firefox Web Workers Demo</h1>
+<div id="workerlog"></div>
+<script type="text/javascript">
+
+var worker = new Worker("thread.js");  
+
+worker.onmessage = function(message) {
+	var divObj = document.getElementById("workerlog");
+	divObj.innerHTML = "Received message from worker: <br />" + message.data.message + "<br><Br>" + divObj.innerHTML;
+};
+
+worker.onerror = function(error) {
+	var divObj = document.getElementById("workerlog");
+	divObj.innerHTML = "<b>Error from worker: <br />" + error.message + "</b><br><Br>" + divObj.innerHTML;
+};
+
+worker.postMessage({somedata: "Come back, worker thread!"});
+
+</script>
+</body>
+</html>

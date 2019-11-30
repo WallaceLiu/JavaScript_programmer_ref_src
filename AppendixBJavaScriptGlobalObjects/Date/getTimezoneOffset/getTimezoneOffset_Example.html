@@ -1,0 +1,11 @@
+<script>
+
+var aprilFools = new Date(2008, 4, 1, 16, 25, 13, 9);
+
+var someOtherDay = new Date(2004, 4, 9, 31, 31, 41, 6);
+
+document.write( aprilFools.getTimezoneOffset() + "<br />" ); // 420 no matter what for this locale
+
+document.write( someOtherDay.getTimezoneOffset() ); // 420 
+
+</script>

@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function setOnClick(obj) {
+	obj.onclick = function() {
+		alert('hello!');
+	}
+	return null;
+}
+var myDivObj = document.getElementById('myDiv');
+setOnClick(myDivObj);
+// Now myDivObj has a permanent reference to the closure formed inside the setOnClick function
+</script>
+</body>
+</html>

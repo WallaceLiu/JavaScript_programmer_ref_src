@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrating a problem with closures and loops
+var myArray = ["Apple", "Car", "Tree", "Castle"];
+var closureArray = new Array();
+
+// Loop through myArray and create a closure for each that outputs that item
+for (var i = 0; i < myArray.length; i++) {
+	var theItem = myArray[i];
+	closureArray[i] = function() {
+		document.write(theItem + "<br />");
+	}
+}
+
+// Loop through the closures and execute each one.
+for (var i = 0; i < closureArray.length; i++) {
+	closureArray[i]();
+}
+</script>
+</body>
+</html>

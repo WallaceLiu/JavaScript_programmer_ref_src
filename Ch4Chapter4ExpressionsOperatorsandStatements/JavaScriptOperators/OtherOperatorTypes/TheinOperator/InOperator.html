@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var babyNames = ["Micheal", "Ryan", "Matea", "Mitchell", "Farris", "Cia", "Larry"];
+
+// The following property, while not explicitly defined, is an automatic member of all arrays
+document.write("length" in babyNames);	// true
+
+// The following example will return false because it cannot be accessed by typing babyNames.Ryan
+document.write("Ryan" in babyNames);	// false
+document.write(1 in babyNames);		// true because babyNames[1] == "Ryan" so it exists
+
+var myObject = {apple:true, funny:false};
+document.write("apple" in myObject);	// true
+</script>
+</body>
+</html>

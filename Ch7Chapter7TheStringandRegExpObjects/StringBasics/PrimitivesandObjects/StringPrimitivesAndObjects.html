@@ -1,0 +1,29 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Create a simple string primitive from a literal
+var myStringPrimitive = "Hello World";
+
+// Create a more sophisticated String object using the String object constructor
+var myStringObject = new String("Hello World");
+
+// We can also create a string primitive by omitting the "new" keyword..
+var myStringPrimitive2 = String("Hello World");
+
+// Accessing the length property of strings can be done on variables (be they primitives or objects) and also on literals (another form of a primitive)
+document.write( myStringPrimitive.length + "<br />");    // "11"
+document.write( myStringPrimitive2.length + "<br />");    // "11"
+document.write( "Hello World".length  + "<br />");    // "11"
+document.write( myStringObject.length + "<br />");    // "11"
+
+document.write( typeof myStringPrimitive + "<br />" );    // "string"
+document.write( typeof myStringPrimitive2 + "<br />" );    // "string"
+document.write( typeof "Hello World" + "<br />" );    // "string"
+document.write( typeof myStringObject + "<br />" );    // "object"
+
+document.write( typeof myStringObject.valueOf() );    // "string"
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function price(item)
+{
+    switch (item) {
+                case "comic book":
+                        return 3.41;
+                        break;
+                case "milk 2L":
+                        return 4.59;
+                        break;		
+                case "apple":
+                        return 0.39;
+                        break;
+                case "potato chips":
+                        return 1.29;
+                        break;
+                default:
+                        return 0;
+                        break;
+    }
+}
+
+document.write("$" + price("apple"));	// "$0.39"
+</script>
+</body>
+</html>

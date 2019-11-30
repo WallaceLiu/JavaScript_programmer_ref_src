@@ -1,0 +1,149 @@
+<html>
+<head>
+    <title>Form Tooltip Test</title>
+	<script type="text/javascript">
+
+	function getCoords(elObj)
+	{	
+	    if (elObj.getBoundingClientRect) {
+	        var coords = elObj.getBoundingClientRect();
+	        // Internet Explorer
+	        var scrollX = document.body.scrollLeft;
+	        var scrollY = document.body.scrollTop;
+	        if (window.pageXOffset) {
+	            // Firefox
+	            scrollX = window.pageXOffset;
+	            scrollY = window.pageYOffset;
+	        }
+	        coords = {
+	            left:Math.round(coords.left)+scrollX,
+	            right:Math.round(coords.right)+scrollX,
+	            top:Math.round(coords.top)+scrollY,
+	            bottom:Math.round(coords.bottom)+scrollY
+	        };
+	    } else if (document.getBoxObjectFor) {
+	        var coords = document.getBoxObjectFor(elObj);
+	        coords = {
+	            left:coords.x,
+	            right:coords.x+coords.width,
+	            top:coords.y,
+	            bottom:coords.y+coords.height
+	        };			
+	    } else {
+	        var elCopy = elObj;
+	        var originalElement = elObj;
+	        for (var lx=0,ly=0;elObj!=null;
+	            lx+=elObj.offsetLeft,ly+=elObj.offsetTop,elObj=elObj.offsetParent);
+	        for (;elCopy!=document.body;
+	            lx-=elCopy.scrollLeft,ly-=elCopy.scrollTop,elCopy=elCopy.parentNode);
+	        coords = {
+	            left:lx,
+	            right:lx+originalElement.offsetWidth,
+	            top:ly,
+	            bottom:ly+originalElement.offsetHeight
+	        };				
+	    }
+	    return coords;
+	}
+	
+	function setOpacity(elRef, value) {
+	    // value should be between 0 and 1
+
+	    // W3C browsers and IE7+
+	    elRef.style.opacity = value;
+	    // Older versions of IE
+	    elRef.style.filter = 'alpha(opacity=' + Math.round(value*100) + ')';
+	}
+	
+	// The tooltip class
+	function tooltip(text, attachToEl) {
+		
+		// Create the div that will contain the text
+		var tooltipDiv = document.createElement("div");
+		tooltipDiv.style.position = "absolute";
+		
+		// Style the tool tip and fill it with text
+		tooltipDiv.style.backgroundColor = "yellow";
+		tooltipDiv.style.padding = "2px";
+		var currentOpacity = 0.0;
+		setOpacity(tooltipDiv, currentOpacity);		
+		tooltipDiv.innerHTML = text;
+				
+		// Find the coordinates of the element we're attaching it to
+		var boxToAttachTo = getCoords(attachToEl);
+		tooltipDiv.style.left = boxToAttachTo.right+10 + "px";
+		tooltipDiv.style.top = boxToAttachTo.top + "px";
+		
+		// Create a timer object
+		var timerObj = null;
+		
+		// This private function will fade the tooltip in
+		var fadeIn = function() {
+			clearTimeout(timerObj);
+			
+			currentOpacity += 0.1;
+			setOpacity(tooltipDiv, currentOpacity);
+			if (currentOpacity < 1.0)
+				timerObj = setTimeout(fadeIn, 100);
+		}
+		
+		// This private function will fade the tooltip out
+		var fadeOut = function() {
+			clearTimeout(timerObj);
+			
+			currentOpacity -= 0.1;
+			setOpacity(tooltipDiv, currentOpacity);
+			if (currentOpacity > 0.0)
+				timerObj = setTimeout(fadeOut, 100);
+		}
+		
+		// Display the tooltip		
+		this.display = function(timeBeforeDisappear) {
+			document.body.appendChild(tooltipDiv);
+			fadeIn();
+			setTimeout(fadeOut, timeBeforeDisappear);
+		}
+	}
+	
+	// Check if we need to display a tooltip
+	function checkFieldCompleted(e) {
+		var target = e.srcElement || e.target;
+		if (target.value.length == 0) {
+			var newTT = new tooltip("This field is required!", target);
+			newTT.display(2000);
+		}
+	}
+	
+	// Bind all our events by looking for the HTML attribute "required"
+	function bindValidationToFields() {
+		for (var i = 0; i < document.forms.length; i++)
+			for (var x = 0; x < document.forms[i].elements.length; x++) {
+				var field = document.forms[i].elements[x];
+				var required = field.getAttribute("required");
+				if (required && required == "true") {
+					if (field.attachEvent) {
+						// IE
+						field.attachEvent("onblur", checkFieldCompleted);
+					} else {
+						// W3C
+						field.addEventListener("blur", checkFieldCompleted, false);
+					}
+				}
+				
+			}
+	}
+		
+	</script>
+
+</head>
+<body onload="bindValidationToFields()">
+<h1>My Signup Form</h1>
+<p>All fields are required!</p>
+<form>
+<p>Your name: <input type="text" id="name" required="true"></p>
+<p>Your email: <input type="text" id="email" required="true"></p>
+<p>Select a password: <input type="password" id="pw" required="true"></p>
+<input type="submit" disabled="true" value="Sign Up">
+</form>
+</body>
+</html>

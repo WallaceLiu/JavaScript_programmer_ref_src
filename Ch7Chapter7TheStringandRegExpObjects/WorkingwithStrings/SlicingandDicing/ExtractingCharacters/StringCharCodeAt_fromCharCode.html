@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myString = "The quick brown fox.";
+
+for (var i = 0; i < myString.length; i++)
+	document.write( myString.charCodeAt(i) + "-");
+
+document.write("<br />");
+
+for (var i = 0; i < myString.length; i++)
+	document.write( String.fromCharCode( myString.charCodeAt(i) ) + "-");
+
+// 84-104-101-32-113-117-105-99-107-32-98-114-111-119-110-32-102-111-120-46-
+// T-h-e- -q-u-i-c-k- -b-r-o-w-n- -f-o-x-.-
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Merges one object into another, preserving the original values if present
+Object.prototype.merge = function(objSource) {
+    // ensure that we are dealing with a valid object
+    if (typeof this == "object" && objSource && typeof objSource == "object") 
+        for (var arg in objSource)
+            if (typeof objSource[arg] == "object" && !objSource[arg].length) {
+                if (!this[arg])
+                    this[arg] = {};
+                this[arg].merge(objSource[arg]);
+            } else
+                this[arg] = this[arg] || objSource[arg];
+}
+
+// Merge one object into another. We'll start with a generic definition of a person..
+person = {
+    name: "Unknown",
+    age: 0,
+    height: "Unknown",
+    weight: "Unknown",
+    occupation: "Unknown",
+    children: {
+        count: 0,
+        names: []
+    }
+}
+
+elvis = {
+    name: "Elvis Presley",
+    age: 57,
+    occputation: "Rock Star"
+}
+
+// Now we merge person into elvis
+elvis.merge(person);
+
+//.. And test to see if one of the new properties were copied over
+document.write("Elvis's Weight: " + elvis.weight); // "Unknown"
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Create an alert box that will appear after 10 seconds
+var myTimerObj = setTimeout(function(){ alert('Hello!'); }, 10000);
+
+// Cancel the timer
+clearTimeout(myTimerObj);
+
+// have an alert box appear every 10 seconds
+var myIntervalObj = setInterval(function(){ alert('Hello!'); }, 10000);
+
+// cancel it
+clearInterval(myIntervalObj);
+
+</script>
+</body>
+</html>

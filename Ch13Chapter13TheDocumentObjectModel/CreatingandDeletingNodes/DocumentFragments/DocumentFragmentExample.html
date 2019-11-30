@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Creating DocumentFragments and Appending them</title>
+</head>
+<body>
+<script type="text/javascript">
+	var aFragment = document.createDocumentFragment();
+	for (var i = 0; i < 20; i++) {
+		var newParagraph = document.createElement("p");
+		var newText = "Hello World.";
+		newParagraph.innerText = newText;
+		newParagraph.textContent = newText;
+		aFragment.appendChild(newParagraph); 
+	}
+	document.body.appendChild(aFragment);
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var Halloween = new Date("Oct 31, 2009");
+var AprilFools = new Date("Apr 1, 2009");
+
+document.write(Halloween > AprilFools + "<br />");	// true
+
+// Create two dates that are exactly the same
+Halloween = new Date("Oct 31, 2009 UTC");
+var Holloween2 = new Date(Halloween.valueOf());
+
+// Write out the dates to ensure they are the same
+document.write("Holloween: " + Halloween.toString() + ", Halloween2: " + Holloween2.toString() + "<br />");
+// For me: Holloween: Fri Oct 30 2009 17:00:00 GMT-0700 (PDT), Halloween2: Fri Oct 30 2009 17:00:00 GMT-0700 (PDT)
+
+// This will fail.. you cannot test this way
+document.write(Halloween == Holloween2 + "<br />");	// false
+
+// compare the primitive value instead of the object reference
+document.write(Halloween.valueOf() == Halloween2.valueOf());    // true
+
+</script>
+</body>
+</html>

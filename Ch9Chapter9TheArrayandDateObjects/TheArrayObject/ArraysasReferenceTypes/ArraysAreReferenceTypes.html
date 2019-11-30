@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Format for each item in the array is: Name, Age, Do they like Ice cream?
+var people = [
+	["Peggy Sue", 25, true],
+	["Debbie Downer", 34, false],
+	["Johnny Appleseed", 51, true]
+];
+
+var newPeople = people;
+
+// Let's confirm the value of the 2nd name in the NEW array
+document.write("Person #2 name: " + newPeople[1][0] + "<br />"); // "Debbie Downer"
+
+// Modify the original array
+people[1][0] = "Alexei White";
+
+// Let's re-check the 2nd name in the NEW array
+document.write("Person #2 name, again: " + newPeople[1][0]); // "Alexei White"
+
+/*
+Output:
+Person #2 name: Debbie Downer
+Person #2 name, again: Alexei White
+*/
+</script>
+</body>
+</html>

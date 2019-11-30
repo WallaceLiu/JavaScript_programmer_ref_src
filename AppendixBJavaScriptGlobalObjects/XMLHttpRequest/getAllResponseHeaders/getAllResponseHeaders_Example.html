@@ -1,0 +1,31 @@
+<script>
+
+// Not including getXHRReference code for redundancy...
+// ..
+// ..
+
+// Get an instance of the XHR object
+var request = getXHRReference();
+
+// Do a POST request
+request.open("POST", "/quicktest/data", true);
+request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+request.onreadystatechange = function() &osb;
+  if (request.readyState == 4 && request.status == 200) &osb;
+    if (request.responseText) &osb;
+        document.write(request.getAllResponseHeaders());
+        /*
+        POST http://localhost:3000/quicktest/data
+        http://localhost:3000/quicktest/data
+                    330ms    quicktest (line 32)
+        Connection: close Date: Sun, 05 Oct 2008 00:49:11 GMT Set-Cookie: _ref_session=de2cb1e9fead793c8968f28ccfea5cc7; path=/ Status: 200 OK X-Runtime: 0.00223 Etag: "0b2fbdb750a62758027fa2923613c0cc" Cache-Control: private, max-age=0, must-revalidate Server: Mongrel 1.1.5 Content-Type: text/xml; charset=utf-8 Content-Length: 225
+        */        
+    &csb;
+  &csb;
+&csb;;
+
+request.send(""); 
+
+
+</script>

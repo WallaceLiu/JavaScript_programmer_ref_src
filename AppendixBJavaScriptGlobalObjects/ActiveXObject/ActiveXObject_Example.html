@@ -1,0 +1,17 @@
+<script>
+
+// We'll create an Ajax XMLHttp object using ActiveXObject
+
+if(typeof ActiveXObject != "undefined") &osb;
+    // Create an Ajax object
+    xmlhttp = new ActiveXObject("MSXML2.XMLHTTP");
+    xmlhttp.open("GET", "#", false);
+    xmlhttp.send(null);
+    document.write(xmlhttp.responseBody);
+&csb; else &osb;
+    // Not JScript
+    document.write("This browser does not support Microsoft ActiveXObjects.")
+&csb;
+
+
+</script>

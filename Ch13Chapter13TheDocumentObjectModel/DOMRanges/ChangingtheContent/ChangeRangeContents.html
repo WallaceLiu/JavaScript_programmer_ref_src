@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Changing Range Contents</title>
+</head>
+<body>
+	<div id="divregion">
+	<p id="myShortParagraph">I'm a <b>paragraph</b>!</p>
+	<p id="myLongParagraph">Lorem ipsum dolor sit amet, <em>consectetur</em> adipisicing elit, <u>sed do</u> eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <u>quis nostrud exercitation</u> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+	</div>
+
+	<script type="text/javascript">
+		// First check to see if the browser support W3C DOM2 Ranges
+		var w3Range = document.implementation.hasFeature("Range", "2.0");
+
+		// Now let's create a simple range
+		var pRange;
+		if (w3Range) {
+			// W3C Range
+			pRange = document.createRange();
+			// We could also use selectNodeContents here which would just hold the interior
+			pRange.selectNode(document.getElementById('myShortParagraph'));	
+			
+			var newDocFragment = pRange.cloneContents();
+			
+			pRange.deleteContents();
+			
+			newDocFragment.firstChild.textContent = "Some Other Text";
+
+			pRange.insertNode(newDocFragment);
+
+			
+
+		} else {
+			// IE TextRange
+			pRange = document.body.createTextRange();
+			pRange.moveToElementText(document.getElementById('myShortParagraph'));	
+			
+			pRange.pasteHTML("<p>Some Other Text</p>");
+
+		}
+
+
+	</script>
+</body>
+</html>

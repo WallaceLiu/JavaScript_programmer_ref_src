@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Radio Button Getter and Setter</title>
+</head>
+<body>
+<form>
+	<p>What's your favorite color?</p>
+	<input type="radio" name="favColor" id="radio1" value="red"> Red<br />
+	<input type="radio" name="favColor" id="radio2" value="blue"> Blue<br />
+	<input type="radio" name="favColor" id="radio3" value="orange"> Orange<br />
+	<input type="radio" name="favColor" id="radio4" value="green"> Green<br />			
+</form>
+<button onclick="alert( getRadioValueByName('favColor') );">Get the Value</button>
+<script type="text/javascript">
+function getRadioValueByName(groupName) {
+	var groupCollection = [];
+
+	// Loop over all the forms
+	for (var i = 0; i < document.forms.length; i++) {
+		if (document.forms[i].elements[groupName]) {
+			groupCollection = document.forms[i].elements[groupName];
+			break;
+		}
+	}
+	
+	// Now check the value by looping over these
+	if (groupCollection.length > 0) {
+		for (i = 0; i < groupCollection.length; i++)
+			if (groupCollection[i].checked == true)
+				return groupCollection[i].value;
+	}
+}
+</script>
+
+<button onclick="setRadioValueByName('favColor', 'green')">Set the Value to Green</button>
+<script type="text/javascript">
+function setRadioValueByName(groupName, radioValue) {
+	var groupCollection = [];
+
+	// Loop over all the forms
+	for (var i = 0; i < document.forms.length; i++) {
+		if (document.forms[i].elements[groupName]) {
+			groupCollection = document.forms[i].elements[groupName];
+			break;
+		}
+	}
+	
+	// Now check the value by looping over these
+	if (groupCollection.length > 0) {
+		for (i = 0; i < groupCollection.length; i++)
+			if (groupCollection[i].value == radioValue) {
+				groupCollection[i].checked = true;
+				return;
+			}
+	}
+}
+</script>
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Masked Text Input</title>
+</head>
+<body>
+<form>
+Numbers only: 
+<input type="text" validchars="123456790" id="myEntry"><br />
+
+<script type="text/javascript">
+    var tObj = document.getElementById('myEntry');
+    if (document.attachEvent) {
+        tObj.attachEvent("onkeydown", handleMaskedInput);
+    } else {
+        tObj.addEventListener("keydown", handleMaskedInput, true);		
+    }
+	
+    function handleMaskedInput(e) {
+        var target = e.srcElement || e.target;
+        // Convert the keycode to an actual character
+        var char = String.fromCharCode(e.keyCode);
+		
+        // get the list of valid characters
+        var validChars = target.getAttribute("validchars");
+		
+        // check to see if the character is in the list
+        if (validChars.indexOf(char) == -1) {
+            // first the W3C method
+            if (e.preventDefault)
+                e.preventDefault();
+            else
+                e.returnValue = false; // And for IE
+        }
+    }
+</script>
+</form>
+</body>
+</html>

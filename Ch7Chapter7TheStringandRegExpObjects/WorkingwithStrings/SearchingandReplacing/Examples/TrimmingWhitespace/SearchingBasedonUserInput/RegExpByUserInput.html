@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.encodeRegExp = function() {
+	return this.replace(/([*+-.?^${}()|[\]\/\\])/g, '\\$1');
+}
+
+String.prototype.getCount = function(str) {
+	var regEx = new RegExp(str.encodeRegExp(), "g");
+	return this.match(regEx).length;
+}
+
+document.write( "The quick brown fox jumped over the small frog.".getCount("e") ); // 4
+</script>
+</body>
+</html>

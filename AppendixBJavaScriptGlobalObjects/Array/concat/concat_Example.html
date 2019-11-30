@@ -1,0 +1,17 @@
+<script>
+
+var array1 = new Array("one", "two", "three", "four");
+var array2 = new Array("apple", "tree", "horse", "cow");
+
+// This will combine the two arrays
+var myFinalArray = array1.concat(array2);
+
+// Now we will concat some arbitrary items to the final array
+
+myFinalArray = myFinalArray.concat(23,12,44);
+
+// now myArray looks like: one,two,three,four,apple,tree,horse,cow,23,12,44
+
+document.write(myFinalArray.join(',')); 
+
+</script>

@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+<script type="text/javascript">
+Userdata = {
+    storageObject: null,
+    initialize: function() {
+        if (!this.storageObject) {
+            this.storageObject = document.createElement("div");
+            this.storageObject.addBehavior("#default#userData");
+            this.storageObject.style.display = "none";
+            document.body.appendChild(this.storageObject);
+        }
+    },
+	set: function(key, value) {
+	    if (!this.storageObject)
+	        this.initialize();
+	    this.storageObject.setAttribute(key, value);
+	    this.storageObject.save("OfflineStorage");
+	    return value;
+	},
+	get: function(key) {
+	    if (!this.storageObject)
+	        this.initialize();			
+	    this.storageObject.load("OfflineStorage");
+	    return this.storageObject.getAttribute(key);
+	},
+	del: function(key) {
+	    if (!this.storageObject)
+	        this.initialize();			
+	    this.storageObject.removeAttribute(key);
+	    this.storageObject.save("OfflineStorage");
+	},
+	isAvailable: function() {
+	    // Is this Internet Explorer?
+	    return ('\v' == 'v');
+	}
+}
+</script>
+</body>
+</html>

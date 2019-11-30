@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>XHR GET Demo</title>
+</head>
+<body>
+<h1>XHR GET Demo</h1>
+<script type="text/javascript">
+var XHR = function() {
+	if( typeof XMLHttpRequest == "undefined" ) {
+		var xhrNames = ["MSXML2.XMLHTTP.6.0", "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP", "Microsoft.XMLHTTP"];
+		for (var i = 0; i < xhrNames.length; i++) {
+		    try {
+		        var XHR = new ActiveXObject(xhrNames[i]);
+		        break;
+		    } catch(e) {}
+		}
+		if (typeof XHR != undefined)
+			return XHR;
+		else
+			new Error("Ajax not supported!");
+	} else {
+		return new XMLHttpRequest();
+	}
+}
+
+var myXhr = new XHR();
+
+myXhr.open("get", "/1.html", false);
+
+myXhr.send(null);
+
+document.write(myXhr.responseText);
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+Date.prototype.quickDate = function() {
+    return (this.getMonth()+1) + "/" + this.getDay() + "/" + this.getFullYear();
+}
+
+document.write( (new Date()).quickDate() ); // 1/6/2009 
+</script>
+</body>
+</html>

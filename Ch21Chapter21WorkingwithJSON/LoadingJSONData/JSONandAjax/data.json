@@ -1,0 +1,19 @@
+{
+	"customers":[
+		{
+			"name":"Alexei White",
+			"email":"alexei.white@gmail.com",
+			"age":29
+		},
+		{
+			"name":"Tyson Lambert",
+			"email":"tyson@hidden.com",
+			"age":29
+		},
+		{
+			"name":"Lara Freimond",
+			"email":"lara@hidden.com",
+			"age":27
+		}				
+	]
+}

@@ -1,0 +1,18 @@
+<script>
+
+var myText = "Too many cooks spoil the broth.";
+var regex = /\w+/g;
+var theArr;
+while ((theArr = regex.exec(myText)) != null)
+   document.write(theArr.index + "-" + theArr.lastIndex + "\t" + theArr + "<br />");
+
+/*
+0-3 Too
+4-8 many
+9-14 cooks
+15-20 spoil
+21-24 the
+25-30 broth
+*/
+
+</script>

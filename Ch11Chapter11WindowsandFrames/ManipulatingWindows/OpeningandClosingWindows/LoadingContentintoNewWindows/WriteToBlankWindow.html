@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+<body>
+function windowFactory( args, html ) {
+    var argstr = "";
+    for (feature in args) {
+        if (typeof args[feature] == "bool")
+            argstr += feature + "=" + (args[feature] ? "yes" : "no") + ",";
+        else
+            argstr += feature + "=" + args[feature] + ",";
+    }
+    argstr = argstr.substr(0,argstr.length-1);
+    var windowRef = window.open("", "_blank", argstr);
+    setTimeout(function() {
+        if (windowRef) {
+            windowRef.document.write(html);
+            windowRef.document.close();
+    }}, 1000);
+    return false;
+}
+
+function openCustomWindow() {
+    var myHTML = "<html><body><h1>Hi There</h1><p>Thanks for visiting!</p></body></html>";
+    return windowFactory({status:false,titlebar:false, width:500, height:300}, myHTML);
+}
+</script>
+
+<a href="#" onclick="return openCustomWindow()">Thanks for visiting!</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<script>
+
+someObj = &osb;&csb;;
+
+someObj.log = function log (message, type) &osb;
+  if (type == 0) &osb;
+    // log an error
+  &csb;
+  else if (type == 1) &osb;
+    // log a warning
+  &csb;
+&csb;
+
+someObj.__noSuchMethod__ = function __noSuchMethod__ (id, args) &osb;
+    document.write("The function " + id + " does not exist on this object.");
+&csb;
+
+someObj.DoSomethingBad();
+// The function DoSomethingBad does not exist on this object.
+
+</script>

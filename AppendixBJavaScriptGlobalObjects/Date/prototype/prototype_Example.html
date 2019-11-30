@@ -1,0 +1,26 @@
+<script>
+
+// Create a function that outputs if a day falls on a weekend
+function isOnWeekend()
+&osb;
+    if (this.getDay() == 0 || this.getDay() == 6)
+        return true;
+    else
+        return false;    
+&csb;
+
+// Attach the function to the date object using the prototype
+
+Date.prototype.isOnWeekend = isOnWeekend;
+
+// Create a date
+
+var myDate = new Date(0);
+
+// see if it falls on a weekend
+
+document.write(myDate.toString() + " is on a weekend? " + myDate.isOnWeekend());
+
+// Output: Wed Dec 31 1969 16:00:00 GMT-0800 (PST) is on a weekend? false
+
+</script>

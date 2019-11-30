@@ -1,0 +1,11 @@
+<script>
+
+try &osb;
+   x = y   // Cause an error.
+&csb; catch(e)&osb;   // Create local variable e.
+   document.write(e)   // Prints "[object Error]".
+   document.write(e.number)   // Prints 5009.
+   document.write(e.description)   // Prints "'y' is undefined".
+&csb;
+
+</script>

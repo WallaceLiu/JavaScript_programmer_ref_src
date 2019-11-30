@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>XML Parsing Example</title>
+</head>
+
+<body>
+<h1>XML Parsing Example</h1>
+<p id="result"></p>
+<script type="text/javascript">
+function parseXMLDocument(url) {
+	if ('\v' == 'v') {
+		//Internet Explorer
+		var xmlNames = ["Msxml2.DOMDocument.6.0", "Msxml2.DOMDocument.4.0", "Msxml2.DOMDocument.3.0", "Msxml2.DOMDocument", "Microsoft.XMLDOM", "Microsoft.XmlDom"];
+		for (var i = 0; i < xmlNames.length; i++) {
+		    try {
+		        var xmlDoc = new ActiveXObject(xmlNames[i]);
+				break;
+		    } catch(e) {}
+		}
+		xmlDoc.async = true;
+		xmlDoc.onreadystatechange = function() {
+			if (xmlDoc.readyState == 4) {
+				document.getElementById("result").innerHTML = xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			}
+		}
+		xmlDoc.load(url);
+	} else {
+		try  {
+			//Firefox, Mozilla, Opera.
+			var xmlDoc = document.implementation.createDocument("", "", null);
+			xmlDoc.async = true;
+			xmlDoc.load(url);
+			xmlDoc.onload = function() {
+				document.getElementById("result").innerHTML = xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			};
+		} catch(x) {
+			alert(x.message);
+			return;
+		}
+	}
+	return xmlDoc;
+}
+
+
+var xmlDOM = parseXMLDocument("/quicktest/backbutton/");
+
+
+</script>
+</body>
+</html>
+

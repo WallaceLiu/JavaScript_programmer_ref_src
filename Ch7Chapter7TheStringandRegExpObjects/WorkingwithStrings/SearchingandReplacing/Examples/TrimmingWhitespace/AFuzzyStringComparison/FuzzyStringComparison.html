@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.similar = function(str) {
+	if (str) {
+		var SimplifyRegex = /(s)|[^a-z0-9]/gi;
+		return (this.replace(SimplifyRegex, "").toLowerCase() == str.replace(SimplifyRegex, "").toLowerCase());
+	} else
+		return false
+}
+
+var originalString = "  The quick      brown fox jumped      over the small frog.  ";
+var compareString = "The QUICK, BROWN 'FOX' jumped over the small frog!";
+var differentString = "The smart fox ate the frog.";
+
+document.write( "Comparing originalString and compareString: " + originalString.similar(compareString) + "<br />");
+document.write( "Comparing originalString and differentString: " + originalString.similar(differentString));
+
+/*
+Output:
+Comparing originalString and compareString: true
+Comparing originalString and differentString: false
+*/
+</script>
+</body>
+</html>

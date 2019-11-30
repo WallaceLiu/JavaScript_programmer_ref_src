@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+function windowFactory( link, args ) {
+    var argstr = "";
+    for (feature in args) {
+        if (typeof args[feature] == "bool")
+            argstr += feature + "=" + (args[feature] ? "yes" : "no") + ",";
+        else
+            argstr += feature + "=" + args[feature] + ",";
+    }
+    argstr = argstr.substr(0,argstr.length-1);
+    window.open(link.href, "_blank", argstr);
+    return false;
+}
+</script>
+
+<a href="1.html" onclick="return windowFactory(this, {status:false,titlebar:false, width:500, height:300})">Open In Chromeless Window</a>
+</body>
+</html>

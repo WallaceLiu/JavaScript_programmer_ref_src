@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.trim = function() {
+	return this.replace(/^([\s]+)|([\s]+)$/gm, "");
+}
+
+String.prototype.ltrim = function() {
+	return this.replace(/^[\s]+/gm, "");
+}
+
+String.prototype.rtrim = function() {
+	return this.replace(/[\s]+$/gm, "");
+}
+
+var originalString = " The quick   brown fox jumped over the small  frog. ";
+var trimmedString = originalString.trim();
+
+document.write( "Original String length: " + originalString.length + "<br />");
+document.write( "Final String length: " + trimmedString.length + "<br />");
+document.write( "Final String: " + trimmedString);
+
+/*
+Output:
+Original String length: 52
+Final String length: 50
+Final String: The quick brown fox jumped over the small frog.
+*/
+</script>
+</body>
+</html>

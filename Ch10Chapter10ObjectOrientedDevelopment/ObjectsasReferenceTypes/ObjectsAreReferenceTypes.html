@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myAlarm = {time: 5000, description: "Call Lara."};
+
+// Now let's assign the object to a new identifier
+var myAlarm2 = myAlarm;
+
+// And change the original object somehow
+myAlarm.time = 100;
+
+// Check to see if our identifier is changed too
+document.write("myAlarm2.time: " + myAlarm2.time );	// 100
+
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version=”1.0” encoding=”UTF-8”?>
+<OpenSearchDescription xmlns=”http://a9.com/-/spec/opensearchdescription/1.1/”>
+    <ShortName>MSDN</ShortName>
+    <Description>MSDN Example Search</Description>
+    <Tags>MSDN Developer</Tags>
+    <Contact>admin@msdn.com</Contact> 
+    <Url type="text/html" 
+        template="http://search.microsoft.com/search/results.aspx?qu={searchTerms}&amp;View={language?}&amp;p={startPage?}"/>
+</OpenSearchDescription>

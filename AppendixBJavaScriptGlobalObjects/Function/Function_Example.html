@@ -1,0 +1,21 @@
+<script>
+
+function addtwo(x, y)
+&osb;
+   return(x + y);  //Perform addition and return the results.
+&csb;
+
+var addthree = new Function("x", "y", "z", "return(x+y+z)");
+
+var addfour = function(w, x, y, z)
+&osb;
+    return (w+x+y+z);
+&csb;
+
+document.write(addtwo(10,23) + "<br />"); // 33
+
+document.write(addthree(10,23,42) + "<br />"); // 75
+
+document.write(addfour(10,23,42,76)); // 151
+
+</script>

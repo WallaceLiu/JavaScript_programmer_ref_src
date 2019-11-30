@@ -1,0 +1,22 @@
+<script>
+
+// Create a date using all available attributes
+var date1 = new Date(2008, 6, 26, 20, 4, 3, 35);
+
+// Create a date using just the milliseconds attribute
+var date2 = new Date(3432846);
+
+// Create a date using a string
+var date3 = new Date(date1.toString());
+
+// Output all our dates
+document.write(date1.toString() + "<br />");
+document.write(date2.toString() + "<br />");
+document.write(date3.toString() + "<br />");
+
+// Result:
+//Sat Jul 26 2008 20:04:03 GMT-0700 (PDT)
+//Wed Dec 31 1969 16:57:12 GMT-0800 (PST)
+//Sat Jul 26 2008 20:04:03 GMT-0700 (PDT)
+
+</script>

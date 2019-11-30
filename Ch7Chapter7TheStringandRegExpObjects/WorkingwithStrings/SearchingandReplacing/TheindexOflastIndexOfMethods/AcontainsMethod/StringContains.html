@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+String.prototype.contains = function(str) {
+	if (str && this.indexOf(str) > -1)
+		return true;
+	else
+		return false;
+}
+
+var presidentInfo = "As an outspoken opponent of the expansion of slavery in the United States, Abraham Lincoln won the Republican Party nomination in 1860 and was elected president later that year. Abraham Lincoln was one of our most important leaders.";
+
+document.write( presidentInfo.contains("Lincoln") + "<br />");	// true
+
+document.write( presidentInfo.contains("Reagan") );	// false
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<script>
+
+var i = 0;
+var n = 0;
+var j = 0;
+
+startingpoint:
+while (i < 4) &osb;
+    i++
+    n = 0;
+    while (n < 4) &osb;
+        n++;
+        j++;
+        if (n > 2) &osb;
+            continue startingpoint;
+        &csb;
+    &csb;
+&csb;
+
+document.write("Should have been 16 iterations. There actually were: " + j);
+// Should have been 16 iterations. There actually were: 12
+
+</script>

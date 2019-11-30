@@ -1,0 +1,47 @@
+<script>
+
+// Check for the presense of the JSON object
+
+if (this.JSON) &osb;
+    // JSON object does exist.
+
+    var dog = new Object();
+    dog.name = "Jimmy";
+    dog.breed = "German Shepherd";
+    dog.owner = "David Smith";
+    dog.awards = new Array("Fluffy Dog Classic Best in Show", "All German Dogs, Best Coat", "Western Classic - Runner Up");
+
+    // Now we create a filter with which to generate a simplified JSON Structure
+    var dogfilter = new Array();
+    dogfilter[0] = "name";
+    dogfilter[1] = "breed";
+    
+    var jsontext = JSON.stringify(dog);
+    document.write(jsontext + "<br />");
+    // &osb;"name":"Jimmy","breed":"German Shepherd","owner":"David Smith","awards":["Fluffy Dog Classic Best in Show","All German Dogs, Best Coat","Western Classic - Runner Up"]&csb;
+
+    jsontext = JSON.stringify(dog, dogfilter);
+    document.write(jsontext + "<br />");
+    //&osb;"name":"Jimmy","breed":"German Shepherd"&csb;
+    
+    // now lets make one that's easy to read by inserting HTML line breaks after each value
+    jsontext = JSON.stringify(dog, null, "<br />");
+    document.write(jsontext + "<br />");
+    
+/*
+    &osb; 
+    "name": "Jimmy", 
+    "breed": "German Shepherd", 
+    "owner": "David Smith", 
+    "awards": [ 
+
+    "Fluffy Dog Classic Best in Show", 
+
+    "All German Dogs, Best Coat", 
+
+    "Western Classic - Runner Up" 
+    ] &csb;
+*/    
+&csb;
+
+</script>

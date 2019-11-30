@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Modifying Inline Styles</title>
+</head>
+<script type="text/javascript">
+function addNewRule(selector, ruleText) {
+	if (document.styleSheets.length > 0)
+		var cssObj = document.styleSheets[0];
+	else 
+		if (document.createStyleSheet)
+			var cssObj = document.createStyleSheet();
+		else {
+		    var ss = document.createElement("style");
+		    ss.type = "text/css";
+			document.getElementsByTagName("head")[0].appendChild(ss);
+			var cssObj = document.styleSheets[0];
+		}
+
+	
+	if (cssObj.addRule)
+	    cssObj.addRule(selector, ruleText);
+	else
+    	cssObj.insertRule (selector + ' {' + ruleText + '}', 0);
+}
+</script>
+<body onload="addNewRule('.myCSSClass', 'background-color: yellow; border: 1px solid black;')">
+
+<div class="myCSSClass">
+Our widgets are rated by the international widget rating academy to be 22% faster and more durable than other leading widgets. Try our free sample and find out for yourself!
+</div>
+	
+</body>
+</html>

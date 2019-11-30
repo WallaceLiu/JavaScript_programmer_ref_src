@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var Event = function(eventName) {
+    // Record the name of the event
+    this.eventName = eventName;
+
+    // An array of event listeners
+    var eventListeners = [];
+
+    // Provide a way of subscribing to events
+    this.subscribe = function(fn) {
+        eventListeners[eventListeners.length] = fn;
+    };
+
+    // Provide a way of unsubscribing to events
+    this.unsubscribe = function(fn) {
+        for (var i = 0; i < eventListeners.length; i++)
+            if (eventListeners[i] == fn)
+                eventListeners[i] = null;
+    };
+
+    // Fire the event
+    this.fire = function(sender, eventArgs) {
+        this.eventName = eventName;
+        for (var i = 0; i < eventListeners.length; i++)
+            if (eventListeners[i])
+                eventListeners[i](sender, eventArgs);
+    };
+};
+
+var oninitialize = new Event("initialize");
+
+function listenerA(sender, eventArgs) {
+    alert("Listener A was triggered. [" + eventArgs.info + "] ");
+}
+
+function listenerB(sender, eventArgs) {
+    alert("Listener B was triggered. [" + eventArgs.info + "] ");
+}
+
+oninitialize.subscribe( listenerA );
+oninitialize.subscribe( listenerB );
+
+oninitialize.fire( window, { info: 'Success!' } );
+</script>
+</body>
+</html>

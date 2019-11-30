@@ -1,0 +1,30 @@
+<html>
+<head>
+<script src="http://code.google.com/apis/gears/gears_init.js"></script>
+<script>
+  if (!window.google || !google.gears) {
+	var welcomeMessage = "Thanks for trying my site. Please install Google Gears first!";
+    window.location = "http://gears.google.com/?action=install&message=" + escape(welcomeMessage) + "&return=" + window.location;
+  }
+}
+</script>	
+</head>
+<body>
+<h1>Google Gears WorkerPool Demo</h1>
+<div id="workerlog"></div>
+<script type="text/javascript">
+// main.js
+var workerPool = google.gears.factory.create('beta.workerpool');
+
+workerPool.onmessage = function(a, b, message) {
+	var divObj = document.getElementById("workerlog");
+	divObj.innerHTML = "Received message from worker " + message.sender + ": <br />" + message.body + "<br><Br>" + divObj.innerHTML;
+};
+
+var childWorkerId = workerPool.createWorkerFromUrl('thread.js');
+
+workerPool.sendMessage({somedata: "Come back, worker thread!"}, childWorkerId);
+
+</script>
+</body>
+</html>

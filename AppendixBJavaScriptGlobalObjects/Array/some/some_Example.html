@@ -1,0 +1,16 @@
+<script>
+
+var array1 = new Array("one", "cartoon", "yah", "citywide", "cat");
+
+var array2 = new Array("yah", "two", "cat", "yup", "hut");
+
+function isLongEnough(element, index, array) &osb;
+  return (element.length > 3);
+&csb;
+
+document.write(array1.some(isLongEnough) + "<br />");
+// outputs true
+document.write(array2.some(isLongEnough) + "<br />");
+// outputs false
+
+</script>

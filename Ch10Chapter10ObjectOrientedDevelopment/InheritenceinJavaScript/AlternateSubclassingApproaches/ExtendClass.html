@@ -1,0 +1,52 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function Animal() {}
+
+Animal.prototype = {
+    group: "",
+    gender: "",
+    eat: function() {
+        return "Yum, food! nom nom";
+    },
+    sleep: function() {
+        return "zzzzzzzz..";
+    }
+}
+
+function Bird(gender) {
+	this.gender = gender;
+}
+
+function extend(subClass, superClass)
+{
+    // Create a new class that has an empty constructor
+    // with the members of the superClass
+    function inheritance() {};
+    inheritance.prototype = superClass.prototype;
+    // set prototype to new instance of superClass
+    // _without_ the constructor
+    subClass.prototype = new inheritance();
+    subClass.prototype.constructor = subClass;
+    subClass.baseConstructor = superClass;
+    // enable multiple inheritance
+    if (superClass.__super__) {
+        superClass.prototype.__super__ = superClass.__super__;
+    }
+    subClass.__super__ = superClass.prototype;
+}
+extend(Bird, Animal);
+
+Bird.prototype.eat = function() {
+	// since birds like to "caw!" after eating we need to mask this function
+	return Bird.__super__.eat.apply(this) + "... caw!";
+}
+
+var flamingo = new Bird("male");
+
+document.write(flamingo.eat());
+</script>
+</body>
+</html>

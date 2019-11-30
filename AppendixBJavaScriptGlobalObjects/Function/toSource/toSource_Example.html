@@ -1,0 +1,29 @@
+<script>
+
+function Person(name, age) &osb;
+    this.fname = name;
+    this.fage = age;
+    document.write("This is a " + age + " old person named " + name);
+&csb;
+
+// make a backup of the source
+var pSource = Person.toSource();
+
+// see it written out
+document.write(Person.toSource() + "<br />");
+// function Person(name, age) &osb;this.fname = name;this.fage = age;document.write("This is a " + age + " old person named " + name);&csb;
+
+// now we destroy the function
+Person = &osb;&csb;;
+
+// no we look at the source again
+document.write(Person.toSource() + "<br />"); // (&osb;&csb;)
+
+// now we restore it
+eval(pSource);
+
+// no we look at the source again
+document.write(Person.toSource());
+// function Person(name, age) &osb;this.fname = name;this.fage = age;document.write("This is a " + age + " old person named " + name);&csb;
+
+</script>

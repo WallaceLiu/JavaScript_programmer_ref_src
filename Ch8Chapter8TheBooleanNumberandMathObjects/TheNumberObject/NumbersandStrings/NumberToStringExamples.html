@@ -1,0 +1,29 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var a = 34345;
+document.write( a.toString(10) );    // "34345"
+document.write( a.toString(2) );    // "1000011000101001" (binary)
+document.write( a.toString(16) );    // "8629"
+
+var b = 3.1415927;
+document.write( b.toExponential(2) + "<br />"); // 3.14e+0
+document.write( b.toExponential(5) + "<br />" ); // 3.14159e+0
+document.write( b.toExponential(0) + "<br />" ); // 3e+0
+
+var c = 4324234;
+document.write( c.toExponential(3) + "<br />" ); // 4.324e+6
+document.write( c.toExponential() + "<br />" ); // 4.324234e+6
+
+document.write( b.toFixed(2) + "<br />" ); // 3.14
+
+var d = 33254.4234234;
+document.write( d.toPrecision(8) + "<br />" ); // 33254.423
+document.write( d.toPrecision(2) + "<br />" ); // 3.3e+4
+document.write( d.toPrecision(5) ); // 33254
+
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<script>
+
+var myArrayInstance = new Array("one", "two", "three", "four", "one", "two", "three", "four");
+
+// Create a function that we will use to filter the array
+
+function isLongerThanThree(element, index, array) &osb;
+  return (element.length > 3);
+&csb;
+
+// Pass our array through the above filter
+
+var filtered = myArrayInstance.filter(isLongerThanThree);
+
+document.write(filtered.join(',')); // three,four,three,four
+
+</script>

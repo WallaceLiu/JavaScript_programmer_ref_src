@@ -1,0 +1,38 @@
+<script>
+
+// Check for the presense of the JSON object
+
+if (this.JSON) &osb;
+    // JSON object does exist.
+    
+    // First we do a simple example
+    var jsontext = '&osb;"dogname":"Smithy","owner":"Jason Smith", "birthdate":"Sat Sep 20 12:21:55 PDT 2008", "phone":["604-985-3476","604-932-1425"]&csb;';
+    var dog = JSON.parse(jsontext);
+    var dogInfo = "Dog Name: " + dog.dogname + "<br />Owner: " + dog.owner;
+
+    // write out the results
+    document.write(dogInfo + "<br />");
+    // Dog Name: Smithy
+    // Owner: Jason Smith
+
+    // And now a more complicated example that uses a reviver to turn the date string into a proper date
+
+    dog = JSON.parse(jsontext, birthdateReviver);
+
+    function birthdateReviver(key, value) &osb;
+        var bDate;
+        if (key == "birthdate") &osb;
+            bDate = new Date(value);
+            return bDate;
+        &csb;
+        
+        return value;
+    &csb;;
+
+    //  Now we test to see if the birthdate is a propert date object
+    
+    document.write(dog.birthdate.getFullYear()); // 2008
+    
+&csb;
+
+</script>

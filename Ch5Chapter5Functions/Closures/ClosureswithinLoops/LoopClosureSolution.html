@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// A correct use of closures within loops
+var myArray = ["Apple", "Car", "Tree", "Castle"];
+var closureArray = new Array();
+
+function writeItem(word) {
+	return function() {
+		document.write(word + "<br />");
+	}
+}
+
+// Loop through myArray and create a closure for each that outputs that item
+for (var i = 0; i < myArray.length; i++) {
+	var theItem = myArray[i];
+	closureArray[i] = writeItem(theItem);
+}
+
+// Loop through the closures and execute each one.
+for (var i = 0; i < closureArray.length; i++) {
+	closureArray[i]();
+}
+</script>
+</body>
+</html>

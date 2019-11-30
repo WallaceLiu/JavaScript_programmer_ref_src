@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Writing a more useful toString() method for the Object class
+Object.prototype.toString = function() {
+	var result = "";
+	for (prop in this) 
+		result += prop + ": " + this[prop].toString() + ", ";
+	return result;
+}
+
+person = {name:"Elvis", age:57};
+
+document.write(person.toString());	// name: Elvis, age: 57, 
+</script>
+</body>
+</html>

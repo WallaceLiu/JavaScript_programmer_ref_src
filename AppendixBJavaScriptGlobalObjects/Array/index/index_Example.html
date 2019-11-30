@@ -1,0 +1,17 @@
+<script>
+
+// Since this property only shows up when arrays are created by Regular Expressions we make a string:
+
+var myString = "This is really bad grammer really. really.";
+
+// Now we perform a match on the word 'really'
+
+var myArray = myString.match(/really/);
+
+// This will give us an array with one element
+
+// Now we write the result, which will be 8
+
+document.write(myArray.index);
+
+</script>

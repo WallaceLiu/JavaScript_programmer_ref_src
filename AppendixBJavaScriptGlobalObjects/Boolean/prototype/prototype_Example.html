@@ -1,0 +1,24 @@
+<script>
+
+// This function returns the boolean value as a string in Spanish
+function inSpanish()
+&osb;
+    if (this == true)
+        return "verdad";
+    else
+        return "falso";
+&csb;
+
+// Now we extend the Boolean object to include this function using the prototype
+
+Boolean.prototype.inSpanish = inSpanish;
+
+// Now we create a boolean
+
+var myBool = true;
+
+// Display the result which is "verdad"
+
+document.write(myBool.inSpanish());
+
+</script>

@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function Person( firstname, lastname, age ) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+}
+
+Person.prototype.sayHi = function() {
+    document.write( "Hi, my name is " + this.firstname + " " + this.lastname + "<br />");
+}
+
+var dave = new Person("Dave", "Smith", 28);
+
+// Lets create another object that just happens to have some
+// of the same properties as our Person class
+var impersonator = { firstname: "Alex", lastname: "White" };
+
+// Now lets execute our sayHi() function but in the context of impersonator
+dave.sayHi.apply(impersonator, []);
+// "Hi, my name is Alex White"
+</script>
+</body>
+</html>

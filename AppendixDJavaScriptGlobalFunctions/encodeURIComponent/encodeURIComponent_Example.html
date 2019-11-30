@@ -1,0 +1,11 @@
+<script>
+
+var myString="£€&?@ And this is some test text";
+
+document.write(encodeURIComponent(myString) + "<br />"); 
+// %C2%A3%E2%82%AC%26%3F%40%20And%20this%20is%20some%20test%20text
+
+document.write(decodeURIComponent(encodeURIComponent(myString))); 
+// £€&?@ And this is some test text
+
+</script>

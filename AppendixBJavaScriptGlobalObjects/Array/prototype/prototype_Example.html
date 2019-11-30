@@ -1,0 +1,32 @@
+<script>
+
+// This function counts the number of elements with a particular string in them
+function searchCount(strSearch)
+&osb;
+    var itemCount = 0;
+    if (this.length > 0) &osb;
+        for (var i in this) &osb;
+            if (this[i].toString().indexOf(strSearch) > -1)
+                itemCount++;
+        &csb;
+    &csb;
+    return itemCount;
+&csb;
+
+// Now we extend the Array object to include this function using the prototype
+
+Array.prototype.searchCount = searchCount;
+
+// Now we create an array
+
+var myArray = new Array('coolapplebook', 'applecomputer', 'dell', 'microsoft', 'iapple');
+
+// Now we use this method to count the intances of 'apple'
+
+var myResult = myArray.searchCount('apple');
+
+// Display the result which is 3
+
+document.write(myResult);
+
+</script>

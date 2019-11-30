@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>zIndex Example</title>
+	<script type="text/javascript">
+	
+	function setZ(elId, newZ) {
+		var elObj = document.getElementById(elId);
+		elObj.style.zIndex = newZ;
+	}
+		
+	</script>
+<style type="text/css">
+div {
+	position:absolute;
+	width:100px;
+	height:100px;
+	background-color:yellow;
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<div id="div1" style="top:50px; left:50px;">Div 1</div>
+<div id="div2" style="top:80px; left:120px;">Div 2</div>
+<div id="div3" style="top:120px; left:80px;">Div 3</div>
+<button onclick="setZ('div1', 1000)">Make Div 1 come to the front.</button>
+</body>
+</html>

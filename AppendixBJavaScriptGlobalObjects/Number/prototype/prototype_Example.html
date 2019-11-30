@@ -1,0 +1,20 @@
+<script>
+
+// This function will determine if the number is even or odd
+function isEven() &osb;
+    if (this/2 == Math.round(this/2))
+        return true;
+    else
+        return false;
+&csb;
+
+// Now we extend the Number prototype
+Number.prototype.isEven = isEven;
+
+// create a new number instance equal to 24
+var myNum = new Number(24);
+
+// and we output the result of our function
+document.write(myNum.isEven()); // true
+
+</script>

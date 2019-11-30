@@ -1,0 +1,16 @@
+<script>
+
+function apple() &osb;
+    // this calls chery
+    cherry();
+&csb;
+
+function cherry() &osb;
+    // The caller tells us the function that called us was apple
+    document.write(cherry.caller.name); // apple
+&csb;
+
+// We trigger apple by calling it here.
+apple();
+
+</script>

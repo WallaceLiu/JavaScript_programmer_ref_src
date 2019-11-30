@@ -1,0 +1,54 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var myArray = ["hello", "new", "world"];
+
+myArray.length -= 1;
+
+document.write( myArray.toString() + "<br />"); // hello,new
+
+// Lets reset our array
+myArray = ["hello", "new", "world"];
+
+// Remove the last element
+myArray.pop();
+
+// Lets reset our array
+document.write( myArray.toString() + "<br />"); // hello,new
+
+myArray = ["hello", "new", "world"];
+
+// Remove the first element
+myArray.shift(); // returns "hello"
+
+document.write( myArray.toString() + "<br />"); // "new,world"
+
+// Array.slice examples:
+// myNumArray will serve as an example for slice() and splice()
+var myNumArray = [1,2,3,4,5,6,7,8,9,10];
+
+document.write( myNumArray.slice(3,6).toString() + "<br />"); // 4,5,6
+document.write( myNumArray.slice(6).toString() + "<br />"); // 7,8,9,10
+document.write( myNumArray.slice(-3).toString() + "<br />"); // 8,9,10
+
+// Lets reset our array
+myNumArray = [1,2,3,4,5,6,7,8,9,10];
+
+// now lets just remove some from the middle (from position 2 to 5)
+myNumArray.splice(2,3);
+
+// see the result:
+document.write( myNumArray.toString() + "<br />");
+// 1,2,6,7,8,9,10
+
+// Lets do that again, but just insert a bunch
+myNumArray.splice(2,0, "hello", "world");
+
+// Write out the result
+document.write( myNumArray.toString() + "<br />");
+// 1,2,hello,world,6,7,8,9,10
+</script>
+</body>
+</html>

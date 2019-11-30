@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Simulating optional arguments in functions
+function addFiveNumbers(a,b,c,d,e) {
+    var result = 0;
+    if (a)
+        result += a;
+    if (b)
+        result += b;
+    if (c)
+        result += c;
+    if (d)
+        result += d;
+    if (e)
+        result += e;
+
+    return result;
+}
+document.write(addFiveNumbers(1,2,3));    // 6
+</script>
+</body>
+</html>

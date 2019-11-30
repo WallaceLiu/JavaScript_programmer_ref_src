@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<script type="text/javascript">
+function instSearchProvider(url) {
+    if (window.external && window.external["AddSearchProvider"]) {
+        // Firefox 2, IE 7 (OpenSearch)
+        window.external.AddSearchProvider(url);
+    } else {
+        // No search engine support (IE 6, Opera, etc).
+        alert("No search engine support");
+    }
+}
+
+instSearchProvider("msdn.xml");
+</script>
+</body>
+</html>

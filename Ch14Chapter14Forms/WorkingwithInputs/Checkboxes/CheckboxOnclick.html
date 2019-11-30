@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Checkbox Events</title>
+</head>
+<body>
+<form>
+	<input type="checkbox" id="mybox">
+</form>
+<script type="text/javascript">
+	var cbRef = document.getElementById("mybox");
+	if (document.attachEvent) {
+		cbRef.attachEvent("onclick", function(e){
+			setTimeout(function(target) {return function() {handleCBChange(target)}}(e.srcElement || e.target), 0);
+		});
+	} else {
+		cbRef.addEventListener("click", function(e){
+			setTimeout(function(target) {return function() {handleCBChange(target)}}(e.srcElement || e.target), 0);
+		}, false);
+	}
+	
+	function handleCBChange(target) {
+		alert(target.checked);
+	}
+</script>
+</body>
+</html>
+

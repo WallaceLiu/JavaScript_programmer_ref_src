@@ -1,0 +1,115 @@
+<html>
+<head>
+    <title>Rollovers With Mouseenter and Mouseleave</title>
+	<style type="text/css">
+	.regionDiv {
+		width:350px;
+		height:350px;
+		float:left;
+		border:1px solid grey;
+		background-color:#f0f0f0;
+
+	}
+	.regionHighlight {
+		background-color:yellow !important;
+	}
+	.embeddedDiv {
+		width:150px;
+		height:150px;
+		border: 1px dotted grey;
+		background-color:white;
+	}
+	</style>
+	<script type="text/javascript">
+		function hasClass(el, classNm) {
+		    var cNames = el.className.split(' ');
+		    for (var i = 0; i < cNames.length; i++)
+		        if (cNames[i] == classNm)
+		            return true;
+		    return false;
+		}	
+		function addClass(el, classNm) {
+		    if (!hasClass(el, classNm))
+		        el.className += " " + classNm;
+		}
+		function removeClass(el, classNm) {
+		    var cNames = el.className.split(' ');
+		    for (var i = 0; i < cNames.length; i++)
+		        if (cNames[i] == classNm)
+		            cNames[i] = "";
+		    el.className = cNames.join(' ');
+		}
+		function hoverElement(e, oTarget) {
+			var isChildOf = function(pNode, cNode) {
+				if (pNode === cNode) 
+					return true;
+
+				while (cNode && cNode !== pNode)
+					cNode = cNode.parentNode; 
+
+				return cNode === pNode;
+			}
+		    var target = e.srcElement || e.target;
+			if (!oTarget)
+				oTarget = target;
+			var relTarg = e.relatedTarget || e.toElement;
+
+			if (document.attachEvent || !isChildOf(oTarget, relTarg))
+				addClass(oTarget, "regionHighlight");
+		}	
+
+		function unHoverElement(e, oTarget) {
+			var isChildOf = function(pNode, cNode) {
+				if (pNode === cNode) 
+					return true;
+
+				while (cNode && cNode !== pNode)
+					cNode = cNode.parentNode; 
+
+				return cNode === pNode;
+			}
+		    var target = e.srcElement || e.target;
+
+			if (!oTarget)
+				oTarget = target;
+			var relTarg = e.relatedTarget || e.toElement;
+
+			if (document.attachEvent || (!isChildOf(oTarget, relTarg)))
+				removeClass(oTarget, "regionHighlight");
+
+		}
+		function addHandlers() {
+			var divs = document.getElementsByTagName("div");
+			for (var i = 0; i < divs.length; i++) {
+				if (hasClass(divs[i], "regionDiv")) {
+					if (document.attachEvent) {
+					    divs[i].attachEvent("onmouseenter", hoverElement);
+						divs[i].attachEvent("onmouseleave", unHoverElement);
+					} else {
+					    divs[i].addEventListener("mouseover", function(a) {return function(e) {hoverElement(e, a)}}(divs[i]), true);
+						divs[i].addEventListener("mouseout", function(a) {return function(e) {unHoverElement(e, a)}}(divs[i]), true);
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body onload="addHandlers()">
+<div class="regionDiv">
+<h1>Region 1</h1>
+	<div class="embeddedDiv">Hello World</div>
+</div>
+<div class="regionDiv">
+<h1>Region 2</h1>
+	<div class="embeddedDiv">Hello World</div>
+</div>
+<div class="regionDiv">
+<h1>Region 3</h1>
+	<div class="embeddedDiv">Hello World</div>
+</div>
+<div class="regionDiv">
+<h1>Region 4</h1>
+	<div class="embeddedDiv">Hello World</div>
+</div>
+</body>
+</html>

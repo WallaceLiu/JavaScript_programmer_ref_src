@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// A normal distance calculation
+function distance(x1,y1,x2,y2) {
+     return Math.sqrt(Math.pow(y2-y1,2)+Math.pow(x2-x1,2));
+}
+
+// A somewhat simplified version using "with" to extend the scope
+function distance2(x1,y1,x2,y2) {
+    with (Math) {
+        return sqrt(pow(y2-y1,2)+pow(x2-x1,2));
+    }
+}
+
+document.write( distance(10,15,30,66) + "<br />" ); // 54.78138369920935
+document.write( distance2(10,15,30,66) ); // 54.78138369920935
+</script>
+</body>
+</html>

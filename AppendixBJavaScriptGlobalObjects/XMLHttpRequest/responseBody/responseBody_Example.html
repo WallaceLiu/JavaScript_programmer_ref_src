@@ -1,0 +1,12 @@
+<script>
+
+if(typeof ActiveXObject != "undefined") &osb;
+    xmlhttp = new ActiveXObject("MSXML2.XMLHTTP");
+    xmlhttp.open("GET", "#", false);
+    xmlhttp.send(null);
+    document.write(xmlhttp.responseBody);
+&csb; else &osb;
+    document.write("This browser does not support Microsoft ActiveXObjects.")
+&csb;
+
+</script>

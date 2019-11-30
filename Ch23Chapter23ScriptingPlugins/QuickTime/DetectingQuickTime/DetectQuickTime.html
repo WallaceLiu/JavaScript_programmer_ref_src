@@ -1,0 +1,32 @@
+<html>
+<body>
+
+<script LANGUAGE="Javascript" type="text/javascript">
+var QuickTimeEnabled = false;
+</script>
+
+<script language="VBScript">
+On Error Resume Next
+Set theObject = CreateObject("QuickTimeCheckObject.QuickTimeCheck.1")
+On Error goto 0
+If IsObject(theObject) Then
+	If theObject.IsQuickTimeAvailable(0) Then
+		QuickTimeEnabled = true
+	End If
+End If
+</script>
+
+<script language="Javascript" type="text/javascript">
+if (navigator.plugins)
+	for (i=0; i < navigator.plugins.length; i++ )
+		if (navigator.plugins[i].name.indexOf("QuickTime") >= 0){ QuickTimeEnabled = true; }
+		
+if ((navigator.appVersion.indexOf("Mac") > 0) && (navigator.appName.substring(0,9) == "Microsoft") && (parseInt(navigator.appVersion) < 5) )
+	{ QuickTimeEnabled = true; }
+</script>
+
+Does your browser support QuickTime? <script type="text/javascript">
+	document.write( (QuickTimeEnabled ? "yes" : "no") );
+</script>
+</body>
+</html>

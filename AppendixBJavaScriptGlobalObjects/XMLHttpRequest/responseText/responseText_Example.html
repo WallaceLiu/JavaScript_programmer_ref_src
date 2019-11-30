@@ -1,0 +1,26 @@
+<script>
+
+// Code to get the XHR refrence not included due to redundancy
+
+// This function will be called when the readystate changes (ie when the request completes)
+function callbackFunction(response) &osb;
+    document.write(response);
+&csb;
+
+// Get an instance of the XHR object
+var request = getXHRReference();
+
+// Do a POST request
+request.open("POST", "#", true);
+
+request.onreadystatechange = function() &osb;
+    if (request.readyState == 4 && request.status == 200) &osb;
+        if (request.responseText) &osb;
+            callbackFunction(request.responseText);
+        &csb;
+    &csb;
+&csb;;
+
+request.send("");
+
+</script>

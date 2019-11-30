@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+Object.prototype.clone = function() {
+    var objClone = new Object();
+    for (var key in this) 
+       objClone[key] = this[key];	
+    return objClone;	
+}
+
+// Lets create an object with a few properties
+var myOldObject = { name: "Jimmy", sayHi: function() { document.write("Hi, I'm " + this.name);}};
+
+var myClone = document.body.clone();
+
+myOldObject.name = "Alex";
+
+// Is myClone was just a reference to myOldObject, then this would output "Alex":
+document.write(myClone.name ); // "Jimmy"
+</script>
+</body>
+</html>

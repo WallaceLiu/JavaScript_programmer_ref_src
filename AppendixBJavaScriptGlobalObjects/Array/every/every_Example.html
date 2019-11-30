@@ -1,0 +1,16 @@
+<script>
+
+var myShortArrayInstance = new Array("one", "two", "yah", "yup", "cat");
+
+var myLongArrayInstance = new Array("house", "cartoon", "three", "javascript", "forest");
+
+function isLongEnough(element, index, array) &osb;
+  return (element.length > 3);
+&csb;
+
+document.write(myShortArrayInstance.every(isLongEnough) + "<br />");
+// outputs false
+document.write(myLongArrayInstance.every(isLongEnough) + "<br />");
+// outputs true
+
+</script>

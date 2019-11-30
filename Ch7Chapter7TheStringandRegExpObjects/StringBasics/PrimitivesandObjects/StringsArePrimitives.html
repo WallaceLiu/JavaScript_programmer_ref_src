@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// If strings were reference types, the following would not work..
+
+var myString1 = "Hello World";
+var myString2 = myString1;
+myString1 = "Hello Universe";
+
+document.write(myString2);    // "Hello World"
+</script>
+</body>
+</html>

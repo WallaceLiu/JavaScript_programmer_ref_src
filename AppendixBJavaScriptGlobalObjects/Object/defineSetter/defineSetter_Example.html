@@ -1,0 +1,24 @@
+<script>
+
+// Get a reference to the date prototype and define getters and setters for the year
+var dp = Date.prototype;
+dp.__defineGetter__("year", function() &osb; return this.getFullYear(); &csb;);
+dp.__defineSetter__("year", function(y) &osb; this.setFullYear(y); &csb;);
+
+// Now create a date
+
+var myDate = new Date();
+
+// Test the getter
+
+document.write(myDate.year + "<br />"); // 2008
+
+// Test the setter
+
+myDate.year = 2100;
+
+// See if the setter worked
+
+document.write(myDate.toString()); // Mon Sep 20 2100 17:21:27 GMT-0700 (PDT)
+
+</script>

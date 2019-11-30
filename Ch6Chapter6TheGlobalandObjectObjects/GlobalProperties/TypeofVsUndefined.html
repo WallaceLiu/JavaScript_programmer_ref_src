@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Demonstrating how checking the typeof of a variable is more robust than checking equality to undefined
+var myUndefinedVar;
+if (myUndefinedVar === undefined) {
+	document.write("1: myUndefinedVar is undefined.<br/>"); 
+}
+var undefined = "undefined";
+if (myUndefinedVar === undefined) {
+	document.write("2: myUndefinedVar is undefined.<br/>"); 
+}
+if (typeof myUndefinedVar == "undefined") {
+	document.write("3: myUndefinedVar is undefined.<br/>"); 
+}
+</script>
+</body>
+</html>

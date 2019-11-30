@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Getting the global object
+function getGlobal() {
+    return (function(){
+        return this;
+    }).call(null);
+}
+var globalObj = getGlobal();
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Stylesheets Test</title>
+    <style type="text/css">
+        .myClass2 {
+            color: red;	
+        }
+		.myClass3 {
+			color: blue;
+		}
+		.myClass4 {
+			color: green;
+		}
+    </style>
+</head>
+<script type="text/javascript">
+function getSheets() {
+    var styleCollection = [];
+    var indexedStylesheets = 0;
+	
+    for (var i = 0; i < document.styleSheets.length; i++)
+        styleCollection[styleCollection.length] = document.styleSheets[i];
+	
+    while (indexedStylesheets < styleCollection.length) {
+        for (var i = indexedStylesheets; i < styleCollection.length; i++) {
+            indexedStylesheets += 1;
+            if (styleCollection[i].cssRules) {
+                // W3C Browsers
+                for (var x = 0; x < styleCollection[i].cssRules.length; x++) {
+                    if (styleCollection[i].cssRules[x].type == 3)
+                        styleCollection[styleCollection.length] = styleCollection[i].cssRules[x].styleSheet;
+                }
+            } else {
+                // Internet Explorer
+                for (var x = 0; x < styleCollection[i].imports.length; x++) {
+                    styleCollection[styleCollection.length] = styleCollection[i].imports[x];
+                }
+            }
+        }
+    }
+	
+    return styleCollection;
+}
+
+function searchForRules(searchString, exact) {
+    var stylesheetList = getSheets();
+    // this will hold our list of styles
+    var styleList = [];
+
+    // iterate over all the sheets
+    for (var i = 0; i < stylesheetList.length; i++) {
+        var ruleSet = (stylesheetList[i].cssRules || stylesheetList[i].rules);
+        for (var x = 0; x < ruleSet.length; x++)
+			if (exact && ruleSet[x].selectorText == searchString)
+				styleList.push(ruleSet[x]);
+			else if (!exact && ruleSet[x].selectorText.indexOf(searchString) > -1)
+            	styleList.push(ruleSet[x]);
+    }
+    return styleList;
+}
+
+function doSearch() {
+	var resultSet = searchForRules(".myClass3", false);
+	var resultText = "";
+	for (var i = 0; i < resultSet.length; i++)
+		resultText += "<p>Rule selectorText: " + resultSet[i].selectorText + "</p>";
+	document.body.innerHTML = resultText;
+}
+</script>
+<body onload="doSearch()"></body>
+</html>

@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// Setting the execution context of eval()
+var elvis = {
+    name: "Elvis Presley",
+    occupation: "Rock Star",
+    status: "Abducted"
+};
+
+with (elvis) {
+    eval("document.write(name);");	// "Elvis Presley"
+}
+</script>
+</body>
+</html>

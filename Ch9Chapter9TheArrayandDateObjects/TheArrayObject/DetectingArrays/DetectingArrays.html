@@ -1,0 +1,47 @@
+<html>
+<head>
+</head>
+<body>
+<iframe id="myFrame" src="javascript:'<html></html>'"></iframe><br />
+<script>
+// lets create a couple arrays
+var myArrayFromConstructor = new Array("hello", "world");
+
+var myArrayFromLiteral = ["hello", "world"];
+
+// test using typeof
+document.write( typeof myArrayFromConstructor + "<br />");	// "object"
+
+document.write( typeof myArrayFromLiteral + "<br />");	// "object"
+
+// Let's create an array in our iframe as it would exist naturally
+window.frames[window.frames.length-1].myArray = new window.frames[window.frames.length-1].Array();
+
+var iframeArray = window.frames[window.frames.length-1].myArray;
+
+// now we'll try our old test again on the array we created.
+
+document.write( (iframeArray.constructor == Array) + "<br />");    // "false"
+
+document.write( (iframeArray instanceof Array) + "<br />");    // "false"
+
+// Test our duck-typing approach
+
+document.write( ('join' in iframeArray) + "<br />");	// "true"
+
+// Why this won't work:
+
+var myObj = { join:true };
+
+document.write( ('join' in myObj) + "<br />");	// "true"
+
+function isArray(obj) {
+	return Object.prototype.toString.apply(obj) === '[object Array]'; 
+}
+
+document.write( isArray(iframeArray) + "<br />"); // "true"
+
+document.write( isArray(myObj) );	// "false"
+</script>
+</body>
+</html>

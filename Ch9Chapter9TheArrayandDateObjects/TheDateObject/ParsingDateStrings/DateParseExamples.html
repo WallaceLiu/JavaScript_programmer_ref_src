@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+// If we were in pacific time (GMT-0800) this would return 1036051200000
+// but would return other values in different time zones. This is because
+// it does not specify a time zone in the string
+document.write( Date.parse("Oct 31, 2002") + "<br />" );
+
+// Returns 1028851200000 irrespective of the user's time zone
+document.write( Date.parse("Fri, 09 Aug 2002 00:00:00 GMT") + "<br />" );
+
+// Returns 1028876400000 in time zone GMT-0800 but different in others
+document.write( Date.parse("Fri, 09 Aug 2002 00:00:00") + "<br />" );
+
+// Returns 0 irrespective of the time zone
+document.write( Date.parse("Thu, 01 Jan 1970 00:00:00 GMT") + "<br />" );
+
+// Returns 28800000 irrespective of the time zone
+document.write( Date.parse("Thu, 01 Jan 1970 00:00:00 GMT-0800") + "<br />" );
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Opacity</title>
+	<script type="text/javascript">
+	
+	function setOpacity(elRef, value) {
+		// value should be between 0 and 1
+	
+		// W3C browsers and IE7+
+		elRef.style.opacity = value;
+		// Older versions of IE
+		elRef.style.filter = 'alpha(opacity=' + Math.round(value*100) + ')';
+	}
+	
+		
+	</script>
+
+</head>
+<body>
+<p id="myP">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<button onclick="setOpacity(document.getElementById('myP'), 0.5);">Set the opacity of the paragraph to 0.5.</button>
+</body>
+</html>
